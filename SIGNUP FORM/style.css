@@ -1,0 +1,103 @@
+body {
+  background: #0f0f0f;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup-section {
+  width: 100%;
+  max-width: 480px;
+  margin: 80px auto;
+  padding: 40px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.2);
+  color: #fff;
+}
+
+.signup-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  color: #00ffc8;
+}
+
+/* FORM GROUPS */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* LABELS FIXED ABOVE INPUTS */
+.form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+
+/* INPUTS */
+.form-group input {
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #0f0f0f;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #00ffc8;
+  box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+  outline: none;
+}
+
+/* PASSWORD TOGGLE */
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #888;
+  transition: 0.2s;
+}
+
+.toggle-password:hover {
+  color: #00ffc8;
+  transform: scale(1.1);
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #00ffc8;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #00cfa3;
+  transform: translateY(-2px);
+}
+
+/* STATUS MESSAGE */
+.status {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}

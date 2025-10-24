@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP FORM - NET ASSOCIATES</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="signup-section">
+        <h2>CREATE YOUR ACCOUNT</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <input type="text" id="username" required>
+                <label for="username">Username</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-group password-group">
+                <input type="password" id="password" required minlength="6">
+                <label for="password">Password</label>
+                <span class="toggle-password" data-target="password">👁️</span>
+            </div>
+
+            <div class="form-group password-group">
+                <input type="password" id="confirmPassword" required>
+                <label for="confirmPassword">Confirm Password</label>
+                <span class="toggle-password" data-target="confirmPassword">👁️</span>
+            </div>
+
+            <button type="submit" class="submit-btn">SIGN UP</button>
+        </form>
+        <p class="status"></p>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

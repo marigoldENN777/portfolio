@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Number Grid</title>
+<style>
+  body {
+    background: #0f172a;
+    color: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-gap: 20px;
+  }
+
+  .number {
+    font-size: 2.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .number.animate {
+    transform: scale(1.3);
+    color: #38bdf8;
+  }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+    <div class="number">0</div>
+  </div>
+
+<script>
+  const numbers = document.querySelectorAll('.number');
+
+  function randomNumber() {
+    return Math.floor(Math.random() * 100);
+  }
+
+  function updateNumbers() {
+    numbers.forEach(num => {
+      num.classList.add('animate');
+      num.textContent = randomNumber();
+      setTimeout(() => num.classList.remove('animate'), 300);
+    });
+  }
+
+  setInterval(updateNumbers, 1200);
+</script>
+</body>
+</html>

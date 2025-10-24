@@ -1,0 +1,76 @@
+.subscribe-section {
+  width: 100%;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.2);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.subscribe-section h2 {
+  margin-bottom: 25px;
+  color: #00ffc8;
+  letter-spacing: 1px;
+}
+
+/* FORM GROUP */
+.subscribe-section .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.subscribe-section .form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subscribe-section input {
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #0f0f0f;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.subscribe-section input:focus {
+  border-color: #00ffc8;
+  box-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+  outline: none;
+}
+
+/* SUBMIT BUTTON */
+.subscribe-section .submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #00ffc8;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.subscribe-section .submit-btn:hover {
+  background: #00cfa3;
+  transform: translateY(-2px);
+}
+
+/* STATUS MESSAGE */
+.subscribe-section .status {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #00ffc8;
+}

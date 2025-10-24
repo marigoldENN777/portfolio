@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider with Zoom & Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px;
+            background: #f7f7f7;
+        }
+
+        .slider-container {
+            display: flex;
+            gap: 40px;
+            max-width: 900px;
+            align-items: flex-start;
+        }
+
+        /* Slider */
+        .slider {
+            position: relative;
+            width: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover {
+            transform: scale(1.1);
+        }
+
+        /* Bullets */
+        .bullets {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .bullet {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .bullet.active {
+            background: #333;
+        }
+
+        /* Description text */
+        .description {
+            max-width: 400px;
+        }
+
+        .description h2 {
+            margin: 0 0 10px 0;
+        }
+
+        .description p {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .description ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider-container">
+        <!-- Slider -->
+        <div>
+            <div class="slider">
+                <div class="slides">
+                    <img src="SHOE IMG 1.webp" class="slide" alt="Slide 1">
+                    <img src="SHOE IMG 2.webp" class="slide" alt="Slide 2">
+                    <img src="SHOE IMG 3.webp" class="slide" alt="Slide 3">
+                </div>
+            </div>
+            <div class="bullets">
+                <span class="bullet active" data-index="0"></span>
+                <span class="bullet" data-index="1"></span>
+                <span class="bullet" data-index="2"></span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="description">
+            <h2>Product Name</h2>
+            <p>Here’s a short description of the product. Highlight key features and benefits to attract the buyer.</p>
+            <ul>
+                <li>High-quality materials</li>
+                <li>Modern design</li>
+                <li>Perfect for everyday use</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const bulletElements = document.querySelectorAll('.bullet');
+        let currentIndex = 0;
+
+        bulletElements.forEach(bullet => {
+            bullet.addEventListener('click', () => {
+                currentIndex = bullet.getAttribute('data-index');
+                updateSlider();
+            });
+        });
+
+        function updateSlider() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            bulletElements.forEach(b => b.classList.remove('active'));
+            bulletElements[currentIndex].classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>
