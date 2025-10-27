@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer - Android Style Picker</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #111;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+  }
+
+  .stopwatch {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .scroll-column {
+    width: 80px;
+    height: 180px; /* 3 visible rows (60px each) */
+    overflow-y: scroll;
+    border-radius: 12px;
+    background: #222;
+    text-align: center;
+    scrollbar-width: none;
+    scroll-snap-type: y mandatory;
+    position: relative;
+  }
+
+  .scroll-column::-webkit-scrollbar {
+    display: none;
+  }
+
+  .number {
+    font-size: 2.5rem;
+    height: 60px;
+    line-height: 60px;
+    scroll-snap-align: center;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+  }
+
+  .highlight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 100%;
+    border-top: 2px solid #00e676;
+    border-bottom: 2px solid #00e676;
+    pointer-events: none;
+  }
+
+  .controls button {
+    background: #00c853;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    margin: 0 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .controls button:hover {
+    background: #00e676;
+  }
+
+  .mode {
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="mode">
+  <button id="toggleMode">MODE: SET</button>
+</div>
+
+<div class="stopwatch">
+  <div class="scroll-column" id="hours"></div>
+  <div class="scroll-column" id="minutes"></div>
+  <div class="scroll-column" id="seconds"></div>
+  <div class="highlight"></div>
+</div>
+
+<div class="controls">
+  <button id="start">START</button>
+  <button id="stop">STOP</button>
+  <button id="reset">RESET</button>
+</div>
+
+<script>
+  const hoursCol = document.getElementById("hours");
+  const minutesCol = document.getElementById("minutes");
+  const secondsCol = document.getElementById("seconds");
+
+  let hours = 0, minutes = 0, seconds = 0;
+  let interval;
+  let isRunning = false;
+  let mode = "set";
+
+  const numHeight = 60;
+
+  function createNumbers(col, max) {
+    // Add one blank before and after for centering
+    const emptyTop = document.createElement("div");
+    emptyTop.classList.add("number");
+    emptyTop.textContent = "";
+    col.appendChild(emptyTop);
+
+    for (let i = 0; i <= max; i++) {
+      const div = document.createElement("div");
+      div.classList.add("number");
+      div.textContent = i.toString().padStart(2, "0");
+      col.appendChild(div);
+    }
+
+    const emptyBottom = document.createElement("div");
+    emptyBottom.classList.add("number");
+    emptyBottom.textContent = "";
+    col.appendChild(emptyBottom);
+  }
+
+  createNumbers(hoursCol, 23);
+  createNumbers(minutesCol, 59);
+  createNumbers(secondsCol, 59);
+
+  function updateScroll() {
+    [hoursCol, minutesCol, secondsCol].forEach((col, idx) => {
+      const value = [hours, minutes, seconds][idx];
+      col.scrollTo({
+        top: (value + 1) * numHeight, // +1 offset because of blank at top
+        behavior: "smooth",
+      });
+    });
+  }
+
+  function tickDown() {
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+      clearInterval(interval);
+      interval = null;
+      isRunning = false;
+      alert("⏰ Time’s up!");
+      return;
+    }
+
+    if (seconds === 0) {
+      if (minutes === 0) {
+        if (hours > 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        }
+      } else {
+        minutes--;
+        seconds = 59;
+      }
+    } else {
+      seconds--;
+    }
+    updateScroll();
+  }
+
+  document.getElementById("start").onclick = () => {
+    if (mode === "set") {
+      const getScrollValue = (col) => Math.round(col.scrollTop / numHeight) - 1;
+      hours = Math.max(0, getScrollValue(hoursCol));
+      minutes = Math.max(0, getScrollValue(minutesCol));
+      seconds = Math.max(0, getScrollValue(secondsCol));
+      mode = "run";
+      document.getElementById("toggleMode").textContent = "MODE: RUN";
+      document.querySelectorAll(".scroll-column").forEach(col => col.style.overflowY = "hidden");
+    }
+
+    if (!interval && (hours + minutes + seconds > 0)) {
+      interval = setInterval(tickDown, 1000);
+      isRunning = true;
+    }
+  };
+
+  document.getElementById("stop").onclick = () => {
+    clearInterval(interval);
+    interval = null;
+    isRunning = false;
+  };
+
+  document.getElementById("reset").onclick = () => {
+    clearInterval(interval);
+    interval = null;
+    hours = minutes = seconds = 0;
+    updateScroll();
+    isRunning = false;
+    mode = "set";
+    document.getElementById("toggleMode").textContent = "MODE: SET";
+    document.querySelectorAll(".scroll-column").forEach(col => col.style.overflowY = "scroll");
+  };
+
+  document.getElementById("toggleMode").onclick = () => {
+    if (isRunning) return;
+    mode = mode === "set" ? "run" : "set";
+    const btn = document.getElementById("toggleMode");
+    btn.textContent = "MODE: " + (mode === "set" ? "SET" : "RUN");
+    document.querySelectorAll(".scroll-column").forEach(col => {
+      col.style.overflowY = mode === "set" ? "scroll" : "hidden";
+    });
+  };
+
+  // Highlight the centered number
+  function highlightCenter(col) {
+    const numbers = col.querySelectorAll(".number");
+    const index = Math.round(col.scrollTop / numHeight);
+    numbers.forEach(n => n.classList.remove("active"));
+    if (numbers[index + 1]) numbers[index + 1].classList.add("active");
+  }
+
+  [hoursCol, minutesCol, secondsCol].forEach(col => {
+    col.addEventListener("scroll", () => highlightCenter(col));
+  });
+
+  updateScroll();
+</script>
+
+</body>
+</html>
