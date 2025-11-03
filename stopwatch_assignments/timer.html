@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .timer-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      width: 60px;
+      padding: 8px;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin: 0 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .display {
+      font-size: 2rem;
+      margin-top: 20px;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="timer-container">
+    <h2>Countdown Timer</h2>
+    <div>
+      <input type="number" id="hours" min="0" max="99" placeholder="HH"> :
+      <input type="number" id="minutes" min="0" max="59" placeholder="MM"> :
+      <input type="number" id="seconds" min="0" max="59" placeholder="SS">
+    </div>
+    <button id="startButton">Start Countdown</button>
+    <div class="display" id="display">00:00:00</div>
+  </div>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const display = document.getElementById('display');
+
+    startButton.addEventListener('click', () => {
+      let hours = parseInt(document.getElementById('hours').value) || 0;
+      let minutes = parseInt(document.getElementById('minutes').value) || 0;
+      let seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+      let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+
+      if (totalSeconds <= 0) {
+        alert("Please enter a valid time!");
+        return;
+      }
+
+      startButton.disabled = true;
+
+      const updateDisplay = () => {
+        const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(totalSeconds % 60).padStart(2, '0');
+        display.textContent = `${h}:${m}:${s}`;
+      };
+
+      updateDisplay();
+
+      const countdown = setInterval(() => {
+        if (totalSeconds <= 0) {
+          clearInterval(countdown);
+          display.textContent = "00:00:00";
+          alert("⏰ Time's up!");
+          startButton.disabled = false;
+          return;
+        }
+        totalSeconds--;
+        updateDisplay();
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
