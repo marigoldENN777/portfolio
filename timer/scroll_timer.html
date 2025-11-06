@@ -1,233 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Watch ⏰</title>
-    <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            background: #f7f7f7;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Watch ⏰</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
 
-        .d-flex {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
+    .d-flex {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
 
-        div.left-side-minutes,
-        div.right-side-seconds,
-        div.left-side-hours {
-            border: 1px solid lightgrey;
-            text-align: center;
-            height: max-content;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scrollbar-width: none;
-            width: 80px;
-            background: white;
-            border-radius: 10px;
-        }
+    div.left-side-minutes,
+    div.right-side-seconds,
+    div.left-side-hours {
+      border: 1px solid lightgrey;
+      text-align: center;
+      height: max-content;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+      width: 80px;
+      background: white;
+      border-radius: 10px;
+    }
 
-        .left-side-minutes::-webkit-scrollbar,
-        .right-side-seconds::-webkit-scrollbar,
-        .left-side-hours::-webkit-scrollbar {
-            display: none;
-        }
+    .left-side-minutes::-webkit-scrollbar,
+    .right-side-seconds::-webkit-scrollbar,
+    .left-side-hours::-webkit-scrollbar {
+      display: none;
+    }
 
-        .hours,
-        .minutes,
-        .seconds {
-            font-size: 1.5rem;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            scroll-snap-align: center;
-        }
+    .hours,
+    .minutes,
+    .seconds {
+      font-size: 1.5rem;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      scroll-snap-align: center;
+    }
 
-        .invisible {
-            opacity: 0;
-            height: 15px;
-        }
+    .invisible {
+      opacity: 0;
+      height: 15px;
+    }
 
-        .button {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .button {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-        .start-timer-button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-        }
+    .start-timer-button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
 
-        .start-timer-button:hover {
-            background: #0056b3;
-        }
-    </style>
+    .start-timer-button:hover {
+      background: #0056b3;
+    }
+
+    .countdown-display {
+      margin-top: 25px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #222;
+    }
+  </style>
 </head>
-
 <body>
-    <h1 style="margin-bottom: 2px">Countdown Watch ⏰</h1>
-    <h2 style="margin-top: 5px">Under development</h2>
-    <div class="d-flex">
-        <div class="left-side-hours"></div>
-        <div class="left-side-minutes"></div>
-        <div class="right-side-seconds"></div>
-    </div>
-    <div class="button">
-        <button class="start-timer-button">Start Timer</button>
-    </div>
+  <h1>Timer</h1>
+  <p>Scroll to set the timer ⏰</p>
+  <div class="d-flex">
+    <div class="left-side-hours"></div>
+    <div class="left-side-minutes"></div>
+    <div class="right-side-seconds"></div>
+  </div>
+  <div class="button">
+    <button class="start-timer-button">Start Timer</button>
+  </div>
 
-    <script>
-        const left_side_h = document.querySelector('.left-side-hours');
-        const left_side_m = document.querySelector('.left-side-minutes');
-        const right_side_s = document.querySelector('.right-side-seconds');
-        const start_timer_button = document.querySelector('.start-timer-button');
+  <div class="countdown-display">00:00:00</div>
 
-        function addInvisibleStart(container, className) {
-            const invisible = document.createElement('div');
-            invisible.classList.add(className, 'invisible');
-            invisible.innerText = "-";
-            container.appendChild(invisible);
+  <script>
+    const left_side_h = document.querySelector(".left-side-hours");
+    const left_side_m = document.querySelector(".left-side-minutes");
+    const right_side_s = document.querySelector(".right-side-seconds");
+    const start_timer_button = document.querySelector(".start-timer-button");
+    const display = document.querySelector(".countdown-display");
+
+    function addInvisibleStart(container, className) {
+      const invisible = document.createElement("div");
+      invisible.classList.add(className, "invisible");
+      invisible.innerText = "-";
+      container.appendChild(invisible);
+    }
+
+    // === CREATE HOURS (0–24) ===
+    addInvisibleStart(left_side_h, "hours");
+    for (let i = 0; i <= 24; i++) {
+      const hour = document.createElement("div");
+      hour.classList.add("hours");
+      hour.innerText = i;
+      left_side_h.appendChild(hour);
+    }
+
+    // === CREATE MINUTES (0–59) ===
+    addInvisibleStart(left_side_m, "minutes");
+    for (let i = 0; i <= 59; i++) {
+      const minute = document.createElement("div");
+      minute.classList.add("minutes");
+      minute.innerText = i;
+      left_side_m.appendChild(minute);
+    }
+
+    // === CREATE SECONDS (0–59) ===
+    addInvisibleStart(right_side_s, "seconds");
+    for (let i = 0; i <= 59; i++) {
+      const second = document.createElement("div");
+      second.classList.add("seconds");
+      second.innerText = i;
+      right_side_s.appendChild(second);
+    }
+
+    // === HEIGHTS AND SCROLLING ===
+    function setScrollBehavior(container, className) {
+      const element = container.querySelector("." + className);
+      const height = element.offsetHeight;
+      container.style.height = 3 * height + "px";
+      container.addEventListener("wheel", function (e) {
+        e.preventDefault();
+        const direction = e.deltaY > 0 ? 1 : -1;
+        container.scrollBy({ top: direction * height, behavior: "smooth" });
+      });
+    }
+
+    setScrollBehavior(left_side_h, "hours");
+    setScrollBehavior(left_side_m, "minutes");
+    setScrollBehavior(right_side_s, "seconds");
+
+    function getMiddleValue(container, className) {
+      const items = container.querySelectorAll("." + className);
+      const height = items[1].offsetHeight;
+      const scrollTop = container.scrollTop;
+      const index = Math.round(scrollTop / height);
+      return parseInt(items[index + 1]?.innerText || 0);
+    }
+
+    start_timer_button.addEventListener("click", () => {
+      let hoursLeft = getMiddleValue(left_side_h, "hours");
+      let minutesLeft = getMiddleValue(left_side_m, "minutes");
+      let secondsLeft = getMiddleValue(right_side_s, "seconds");
+
+      let totalSeconds = hoursLeft * 3600 + minutesLeft * 60 + secondsLeft;
+
+      const countdown = setInterval(() => {
+        if (totalSeconds <= 0) {
+          clearInterval(countdown);
+          display.textContent = "00:00:00";
+          setTimeout(() => alert("Countdown finished!"), 300);
+          return;
         }
 
-        // === CREATE HOURS (0–24) ===
-        addInvisibleStart(left_side_h, 'hours');
-        for (let i = 0; i <= 24; i++) {
-            const hour = document.createElement('div');
-            hour.classList.add('hours');
-            hour.innerText = i;
-            left_side_h.appendChild(hour);
-        }
+        totalSeconds--;
 
-        // === CREATE MINUTES (0–120) ===
-        addInvisibleStart(left_side_m, 'minutes');
-        for (let i = 0; i <= 120; i++) {
-            const minute = document.createElement('div');
-            minute.classList.add('minutes');
-            minute.innerText = i;
-            left_side_m.appendChild(minute);
-        }
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
 
-        // === CREATE SECONDS (0–60) ===
-        addInvisibleStart(right_side_s, 'seconds');
-        for (let i = 0; i <= 60; i++) {
-            const second = document.createElement('div');
-            second.classList.add('seconds');
-            second.innerText = i;
-            right_side_s.appendChild(second);
-        }
-
-        // === HEIGHTS AND SCROLLING ===
-        function setScrollBehavior(container, className) {
-            const element = container.querySelector('.' + className);
-            const height = element.offsetHeight;
-            container.style.height = 3 * height + 'px';
-            container.addEventListener('wheel', function (e) {
-                e.preventDefault();
-                const direction = e.deltaY > 0 ? 1 : -1;
-                container.scrollBy({ top: direction * height, behavior: 'smooth' });
-            });
-        }
-
-        setScrollBehavior(left_side_h, 'hours');
-        setScrollBehavior(left_side_m, 'minutes');
-        setScrollBehavior(right_side_s, 'seconds');
-
-        // === SCROLL HELPERS ===
-        function scrollToValue(container, className, value) {
-            const items = container.querySelectorAll('.' + className);
-            const height = items[1].offsetHeight; // first one is invisible
-            console.log(items[1]);
-            const targetIndex = Array.from(items).findIndex(el => parseInt(el.innerText) === value);
-            if (targetIndex === -1) return;
-            const scrollTop = targetIndex * height;
-            container.scrollTo({ top: scrollTop, behavior: 'smooth' });
-        }
-
-        // === COUNTDOWN ===
-        start_timer_button.addEventListener('click', startCountdown);
-
-        function startCountdown() {
-            const getMiddleValue = (container, className) => {
-                const items = container.querySelectorAll('.' + className);
-                const height = items[1].offsetHeight;
-                const scrollTop = container.scrollTop;
-                const firstVisibleIndex = Math.floor(scrollTop / height);
-                const middleIndex = firstVisibleIndex + 1;
-                return parseInt(items[Math.min(middleIndex, items.length - 1)].innerText) || 0;
-            };
-
-            const hoursItems = left_side_h.querySelectorAll('.hours');
-            const minutesItems = left_side_m.querySelectorAll('.minutes');
-            const secondsItems = right_side_s.querySelectorAll('.seconds');
-
-            let hoursLeft = getMiddleValue(left_side_h, 'hours');
-            let minutesLeft = getMiddleValue(left_side_m, 'minutes');
-            let secondsLeft = getMiddleValue(right_side_s, 'seconds');
-
-            console.log(hoursLeft, minutesLeft, secondsLeft)
-
-            let totalSeconds = (hoursLeft * 3600) + (minutesLeft * 60) + secondsLeft;
-
-            const scrollToIndex = (container, index) => {
-                const itemHeight = container.querySelector('div').offsetHeight;
-                container.scrollTo({
-                    top: index * itemHeight,
-                    behavior: 'smooth'
-                });
-            };
-
-            const countdown = setInterval(() => {
-                if (totalSeconds <= 0) {
-                    clearInterval(countdown);
-                    scrollToIndex(left_side_h, 0);
-                    scrollToIndex(left_side_m, 0);
-                    scrollToIndex(right_side_s, 0);
-                    setTimeout(() => alert("Countdown finished!"), 500);
-                    return;
-                }
-
-                totalSeconds--;
-
-                // math logic (still correct)
-                hoursLeft = Math.floor(totalSeconds / 3600);
-                minutesLeft = Math.floor((totalSeconds % 3600) / 60);
-                secondsLeft = totalSeconds % 60;
-
-                // find correct indexes
-                const hourIndex = Math.max(0, hoursLeft);
-                const minuteIndex = Math.max(0, minutesLeft);
-                const secondIndex = Math.max(0, secondsLeft);
-
-                // scroll smoothly by index
-                scrollToIndex(left_side_h, hourIndex);
-                scrollToIndex(left_side_m, minuteIndex);
-                scrollToIndex(right_side_s, secondIndex);
-            }, 1000);
-        }
-
-
-    </script>
+        display.textContent =
+          `${h.toString().padStart(2, "0")}:` +
+          `${m.toString().padStart(2, "0")}:` +
+          `${s.toString().padStart(2, "0")}`;
+      }, 1000);
+    });
+  </script>
 </body>
-
 </html>
