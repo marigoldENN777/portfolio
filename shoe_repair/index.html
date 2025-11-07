@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Popravke Obuće Sava - Popravka Cipela Beograd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            background-color: #001427;
+            /* dark purple */
+            color: #FEFCFB;
+            /* light lavender */
+        }
+
+        .f-change {
+            font-family: "Lato", sans-serif;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            width: 1200px;
+        }
+
+        header {
+            background-color: #0C120C;
+            /* darker purple */
+            padding: 1rem 2rem;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            display: flex;
+            /* flex-wrap: wrap; */
+            align-items: center;
+            /* justify-content: center; */
+            /*! padding: 2rem; */
+            gap: 2rem;
+            padding: 20px;
+        }
+
+        .hero img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            width: 300px;
+            padding: 20px;
+        }
+
+        .services ul {
+            padding: 20px;
+        }
+
+        .guarantee img {
+            width: 300px;
+            height: auto;
+            object-fit: cover;
+            padding: 20px;
+        }
+
+        .guarantee {
+            display: flex;
+        }
+
+        .contact {
+            background-color: #0C120C;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 40px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Lato", sans-serif;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero img {
+                max-width: 100%;
+            }
+
+            .about .text {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .about .text h3 {
+                font-weight: normal;
+                text-align: center;
+                margin-bottom: 18px;
+                margin-top: 0;
+                font-size: 17px;
+            }
+
+            .hero-text p {
+                font-size: 17px;
+            }
+
+            .services ul {
+                text-align: center;
+                list-style: none;
+                padding: 0;
+                font-size: 18px;
+            }
+
+            .container {
+                max-width: 90%;
+            }
+
+            .guarantee img {
+                max-width: 90%;
+                height: 295px;
+                object-fit: cover;
+                margin: 0 auto;
+            }
+
+            .guarantee {
+                text-align: center;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .process {
+                margin-top: 30px;
+            }
+
+            .the-process h3 {
+                margin-top: 26px;
+            }
+        }
+
+        .about-image {
+            max-width: 90%;
+        }
+
+        .about .text {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="f-change">Popravke Obuće Sava</h1>
+        </header>
+    </div>
+    <div class="container">
+        <section class="hero">
+            <img src="./images/shoe5.jpg" alt="Alati za popravku obuće" />
+            <div class="hero-text">
+                <h2 class="f-change">Profesionalne usluge popravke obuće u Beogradu</h2>
+                <p>Pažljivo i precizno vršimo popravku vaših omiljenih cipela. Kontaktirajte nas za procenu
+                    rada danas!</p>
+                <h3>
+                    „Sa preko 15 godina iskustva, Obućar Sava je pouzdan stručnjak za popravku cipela u
+                    Beogradu. Ponosni
+                    smo na restauraciju vaše obuće uz vrhunski majstorski rad i prijateljski pristup.“
+                </h3>
+            </div>
+        </section>
+    </div>
+
+    <section class="about">
+        <div class="container">
+            <div class="text">
+                <img class="about-image" src="./images/shoe2.jpg" alt="Shoess">
+                <div class="services">
+                    <ul>
+                        <li>Zamena đona i štikli</li>
+                        <li>Razvlačenje cipela</li>
+                        <li>Popravka kože i antilopa</li>
+                        <li>Popravka rajsferšlusa</li>
+                        <li>Čišćenje i poliranje cipela</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <p>
+                „Koristimo samo visokokvalitetne materijale i garantujemo sve popravke na 6 meseci. Vaše
+                zadovoljstvo nam
+                je na prvom mestu.“
+            </p>
+        </div>
+        <div class="container">
+            <div class="guarantee">
+                <img src="./images/shoe3.jpg" alt="Shoe">
+                <div>
+                    <div class="process">
+                        <h3 class="f-change">
+                            Kako funkcioniše
+                        </h3>
+                        <div>
+                            <ol>
+                                <li>Donosite obuću u našu radnju ili nas kontaktirate za detalje</li>
+                                <li>Procenićemo potrebnu popravku i dati vam ponudu</li>
+                                <li>Vi odobravate rad, a mi započinjemo</li>
+                                <li>Preuzimate svoje kao nove cipele</li>
+                            </ol>
+                        </div>
+                        <div class="the-process">
+                            <h3 clas="f-change">
+                                Često postavljena pitanja
+                            </h3>
+                            <ul class="FAQs">
+                                <li>Koliko traje popravka?</li>
+                                <li>Da li popravljate sve vrste obuće?</li>
+                                <li>Da li nudite uslugu preuzimanja/dostave?</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section class="contact">
+            <p><strong>Kontaktirajte nas:</strong></p>
+            <p>Telefon: <a href="tel:+381601234567">+381 60 123 4567</a></p>
+            <p>Email: <a href="mailto:info@popravkeobuce.rs">info@popravkeobuce.rs</a></p>
+        </section>
+
+        <footer>
+            &copy; 2025 Popravke Obuće Sava — Beograd, Srbija
+        </footer>
+    </div>
+</body>
+
+</html>
