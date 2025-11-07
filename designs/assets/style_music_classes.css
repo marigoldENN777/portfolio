@@ -256,6 +256,7 @@ div.cover-image img {
     display: flex;
     padding-bottom: 40px;
     padding-top: 20px;
+    gap: 10px;
 }
 
 .singing-two img {
