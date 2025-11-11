@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db = 'booking_system';
+$db = 'online_booking';
 $user = 'root';
-$pass = '12345'; // your MySQL password if you have one
+$pass = ''; // your MySQL password if you have one
 
 $conn = new mysqli($host, $user, $pass, $db);
 

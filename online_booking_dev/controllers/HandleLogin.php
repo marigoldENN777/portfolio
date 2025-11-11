@@ -4,17 +4,16 @@ include("../config/db.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
-    $password = md5($_POST["password"]); // matches our DB insert hash
+    $password = hash('sha256', $_POST["password"]); // matches our DB insert hash
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM admins WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
-
     if ($result->num_rows === 1) {
         $_SESSION["admin"] = $username;
-        header("Location: ../public/AdminDashboard.php");
+        header("Location: ../public/admin_dashboard.php");
         exit();
     } else {
-        header("Location: ../public/AdminLogin.php?error=1");
+        header("Location: ../public/admin_login.php?error=1");
         exit();
     }
 }

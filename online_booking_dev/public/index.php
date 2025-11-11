@@ -9,7 +9,7 @@
 <body>
   <h1>Book an Appointment</h1>
 
-  <form action="../controllers/handle_booking.php" method="POST">
+  <form action="controllers/HandleBooking.php" method="POST">
     <label>Name:</label>
     <input type="text" name="name" required>
 
