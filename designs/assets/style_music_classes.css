@@ -65,7 +65,7 @@ div.photo-with-overlay {
 
 
 div.main-text {
-    font-family: "Stack Sans Text", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .overlay-headings {
@@ -173,9 +173,11 @@ p {
 }
 
 p {
-    font-family: "Arimo", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
-
+.i-container.one p {
+    width: 88%;
+}
 .introduction-part-two {
     background-color: #034748;
     display: flex;
