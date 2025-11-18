@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Flask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            color: white;
+        }
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            width: 200px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #22c55e;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+        }
+        button:hover {
+            background-color: #16a34a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome 👋</h1>
+    <p>Enter your name and see the magic of Flask!</p>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <br>
+        <button type="submit">Say Hello</button>
+    </form>
+</body>
+</html>
