@@ -74,7 +74,7 @@ if ($result && $result->num_rows > 0) {
 </head>
 <body>
     <h1>Admin Dashboard</h1>
-    <a href="/logout.php" class="logout">Logout</a>
+    <a href="logout.php" class="logout">Logout</a>
 
     <?php if (count($bookings) > 0): ?>
     <table>
@@ -101,7 +101,7 @@ if ($result && $result->num_rows > 0) {
                 <td><?= htmlspecialchars($b['date']) ?></td>
                 <td><?= htmlspecialchars($b['time']) ?></td>
                 <td>
-                    <form action="/controllers/DeleteBooking.php" method="POST" style="display:inline;">
+                    <form action="controllers/DeleteBooking.php" method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $b['id'] ?>">
                         <button type="submit" class="delete-btn">Delete</button>
                     </form>

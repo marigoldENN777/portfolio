@@ -13,7 +13,7 @@
 <body>
 <?php session_start(); ?>
 <?php if(isset($_SESSION["admin_logged_in"])) : ?>
-    <a href="/admin_dashboard" style="display: inline-block; padding: 20px; text-decoration: none; font-size: 18px">Admin Dashboard</a>
+    <a href="admin_dashboard" style="display: inline-block; padding: 20px; text-decoration: none; font-size: 18px">Admin Dashboard</a>
 <?php endif; ?>
 <div class="form-wrapper">
 

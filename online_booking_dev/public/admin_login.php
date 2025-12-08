@@ -13,7 +13,7 @@
 <body>
 <div class="l-form-wrapper">
     <h1>Admin Panel</h1>
-    <form action="../controllers/HandleLogin.php" method="POST">
+    <form action="controllers/HandleLogin.php" method="POST">
         <div class="l-form-items">
             <label>Username:</label>
             <input type="text" name="username" required>
