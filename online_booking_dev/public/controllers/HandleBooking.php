@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
 
     if ($stmt->execute()) {
-        echo " <a style='text-decoration: underline; display: block; padding: 5px' href='/index.php'>Back to booking</a>
+        echo " <a style='text-decoration: underline; display: block; padding: 5px' href='../index.php'>Back to booking</a>
 <p style='padding: 20px 45px; background: #B75D69; width: max-content; color: #fff'>✅ Booking successful! We saved your appointment.</p>";
     } else {
         echo "<p>❌ Booking failed: " . $stmt->error . "</p>";
