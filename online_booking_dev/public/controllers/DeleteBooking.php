@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../config/db.php';
+require __DIR__ . '/../../config/db.php';
 
 if (!isset($_SESSION['admin_logged_in'])) {
     header('Location: ../admin_login.php');
