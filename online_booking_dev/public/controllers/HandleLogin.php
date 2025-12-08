@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../config/db.php");
+include("../../config/db.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -10,10 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
     if ($result->num_rows === 1) {
         $_SESSION["admin"] = $username;
-        header("Location: ../public/admin_dashboard.php");
+        $_SESSION["admin_logged_in"] = true;
+        header("Location: ../admin_dashboard.php");
         exit();
     } else {
-        header("Location: ../public/admin_login.php?error=1");
+        header("Location: ../admin_login.php?error=1");
         exit();
     }
 }

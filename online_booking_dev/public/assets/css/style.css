@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+/* Admin login */
+
+.l-form-wrapper {
+    width: max-content;
+    background: #B75D69;
+    padding: 60px 40px;
+    margin: 25px 25px;
+}
+
+.l-form-wrapper h1 {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    color: #fff;
+}
+
+.l-form-items {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+}
+
+.l-form-items label {
+    margin: 10px 0;
+}
+
+.l-form-items label, .l-form-items button {
+    font-style: italic;
+    font-family: "Arvo", serif;
+    font-weight: 400;
+}
+
+.l-form-items button {
+    color: #fff;
+    background: #1A1423;
+    outline: none;
+    border: none;
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: italic;
+    padding: 5px 0;
+}
+
+.l-form-items label, .l-form-items input {
+    color: #fff;
+}
+
+/* Booking (index.php) */
+
+body {
+    /*background: #e1efe6;*/
+}
+.form-wrapper {
+    width: max-content;
+    margin: 40px auto 0 auto;
+    background: #B75D69;
+    padding: 70px 40px;
+}
+.form-wrapper input, .form-wrapper select, .form-wrapper button {
+    display: block;
+    width: 600px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.form-wrapper label {
+    display: inline-block;
+    margin: 10px 0;
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #fff;
+}
+
+.form-wrapper h1 {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    color: #fff;
+}
+
+.form-items button {
+    color: #fff;
+    background: #1A1423;
+    outline: none;
+    border: none;
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: italic;
+}
