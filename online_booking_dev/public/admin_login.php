@@ -27,7 +27,7 @@
 
     <?php
     if (isset($_GET['error'])) {
-        echo "<p style='color:red;'>Invalid credentials. Please try again.</p>";
+        echo "<p style='color:#fff;'>Invalid credentials. Please try again.</p>";
     }
     ?>
 </div>
