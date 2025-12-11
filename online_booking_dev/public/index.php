@@ -15,7 +15,7 @@
 <?php if(isset($_SESSION["admin_logged_in"])) : ?>
     <a href="admin_dashboard" style="display: inline-block; padding: 20px; text-decoration: none; font-size: 18px">Admin Dashboard</a>
 <?php endif; ?>
-<div class="form-wrapper">
+<div class="form-wrapper" style="margin-bottom: 100px">
 
   <h1>Book an Appointment</h1>
 
@@ -43,8 +43,24 @@
           </select>
 
         <button type="submit">BOOK NOW</button>
+          <?php
+          // Show success if the URL contains ?success=1
+              if (isset($_GET['success'])) {
+                  echo "<p id='successMsg' style='color: #fff; font-size: 20px'>Form submitted successfully!</p>";
+              }
+          ?>
       </div>
   </form>
+
 </div>
+<script>
+    setInterval(() => {
+        const msg = document.getElementById('successMsg');
+        if(msg) {
+            msg.style.display = 'none';
+        }
+    }, 3000)
+
+</script>
 </body>
 </html>

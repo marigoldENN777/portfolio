@@ -16,10 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Prepare failed: " . $conn->error);
     }
     $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
-
     if ($stmt->execute()) {
-        echo " <a style='text-decoration: underline; display: block; padding: 5px' href='/online_booking_dev/public/'>Back to booking</a>
-<p style='padding: 20px 45px; background: #B75D69; width: max-content; color: #fff'>✅ Booking successful! We saved your appointment.</p>";
+        header("Location: ../index.php?success=1");
+        exit;
     } else {
         echo "<p>❌ Booking failed: " . $stmt->error . "</p>";
     }
