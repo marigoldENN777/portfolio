@@ -17,7 +17,7 @@
 <?php endif; ?>
 <div class="form-wrapper" style="margin-bottom: 100px">
   <h1>Book an Appointment</h1>
-    <h5 style="color: #fff">Visit <a style="text-decoration: none; color: #fff;" href="admin_login.php">admin login</a> to view appointments</h5>
+    <h5 style="color: #fff">Visit <a style="font-size: 16px; color: #fff; font-style: italic;" href="admin_login.php">admin login</a> to view appointments</h5>
 
   <form action="controllers/HandleBooking.php" method="POST">
       <div class="form-items">
