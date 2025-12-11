@@ -13,6 +13,7 @@
 <body>
 <div class="l-form-wrapper">
     <h1>Admin Panel</h1>
+    <h5 style="color: #fff">Credentials are: admin admin123</h5>
     <form action="controllers/HandleLogin.php" method="POST">
         <div class="l-form-items">
             <label>Username:</label>
