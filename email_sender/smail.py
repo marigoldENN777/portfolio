@@ -52,7 +52,8 @@ def send():
             "success"
         )
 
-    return redirect(url_for("form"))
+    return redirect("/email_sender/")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
