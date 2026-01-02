@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio page Sally</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/shortcuts.css">
+</head>
+
+<body>
+    <header>
+        <div class="logotype">SALLY DOHERTY</div>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="#">BIOGRAPHY</a></li>
+                <li><a href="#">SINGING LESSONS</a></li>
+                <li><a href="#">EVENTS</a></li>
+                <li><a href="#">NEWS</a></li>
+                <li><a href="#">RECORDINGS</a></li>
+                <li><a href="#">GALLERY</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <i class="fa-solid fa-bars mobile-menu"></i>
+        </nav>
+    </header>
+    <main class="m1">
+        <div class="bck-img-wrapper bck-img--hero">
+            <div class="title-wrapper w-80 h-100 d-flex m-auto">
+                <div class="d-flex flex-column justify-center h-100 gap-10">
+                    <h3 class="title">
+                        Performer & Vocal Coach Sheffiel
+                    </h3>
+                    <h3 class="title">
+                        <span class="underline">SALLY</span> DOHERTY
+                    </h3>
+                    <p>Recording Artist, Performer, Vocal Coach Sally Doherty is a recording artist, performer and vocal coach based in Sheffield.</p>
+                    <button class="btn f-btn">READ MORE</button>
+                </div>
+                <img src="./assets/images/image-1-sally-portrait.png" alt="Sally Portrait 1" class="reveal-img m1-img">
+            </div>
+        </div>
+    </main>
+    <section class="s1">
+        <div class="bck-img--section-1 s1-wrapper">
+            <img class="s1-img reveal-img-2" src="./assets/images/image-2-sally-portrait-2.png" alt="Sally Portrait 2">
+            <div class="s1-elements-wrapper">
+                <h3 class="title">
+                    Vocal Coach Sheffield
+                </h3>
+                <h3 class="title">
+                    <span class="underline">
+                        SINGING
+                    </span> LESSONS
+                </h3>
+                <p>Sally Doherty offers singing lessons in Sheffield (and beyond with remote lessons). She has many years of voice teaching experience with people of all ages, abilities and of varying musical styles: You can book now for singing lessons; one-to-one, small groups and workshops: Jazz, Folk, Blues, Pop, Rock and Latin American.</p>
+                <button class="btn">READ MORE</button>
+            </div>
+        </div>
+    </section>
+    <section class="s2">
+        <div class="bck-img--section-2 s2-wrapper">
+            <img src="./assets/images/image-3-sally-portrait-3.jpg" alt="Sally Portrait 3" class="reveal-img-3">
+            <div class="s2-elements-wrapper">
+                <h3 class="title">
+                    Live Performance
+                </h3>
+                <h3 class="title">
+                    <span class="underline">EVENTS</span>
+                </h3>
+                <p>
+                    Jazz and Latin American music work very well at events of all kinds to create a lovely atmosphere. I can perform with just piano or guitar. For a bigger sound double bass and drums can be added and I have performed at many events; weddings, birthdays, launch parties, art galleries, corporate functions.
+                </p>
+                <button class="btn">VIEW EVENTS</button>
+            </div>
+        </div>
+    </section>
+    <section class="s3">
+        <div class="bck-img--section-3 s3-wrapper">
+            <div class="bck-overlay"></div>
+            <div class="s3-elements-wrapper">
+                <h3 class="title">
+                    In the Studio
+                </h3>
+                <h3 class="title">
+                    <span class="underline">
+                        RECORDINGS
+                    </span>
+                </h3>
+            </div>
+            <div class="grid s3-elements-wrapper">
+                <div class="img-box">
+                    <img src="./assets/images/image-1-sally-album-1.png" alt="Sally Album 1">
+                </div>
+                <div class="img-box">
+                    <img src="./assets/images/image-2-sally-album-2.png" alt="Sally Album 2">
+                </div>
+                <div class="img-box">
+                    <img src="./assets/images/image-3-sally-album-3.png" alt="Sally Album 3">
+                </div>
+                <div class="img-box">
+                    <img src="./assets/images/image-4-sally-album-4.png" alt="Sally Album 4">
+                </div>
+            </div>
+            <button class="btn">DISCOGRAPHY</button>
+        </div>
+    </section>
+    <footer>
+        <section>
+            <div class="bck-img f-wrapper">
+                <h3 class="title"><span class="underline">SALLY
+                    </span> DOHERTY</h3>
+                <a href="mailto:contact@sallydoherty.com">
+                    CONTACT@SALLYDOHERTY.COM
+                </a>
+                <div class="social-network-links">
+                    <a href="#">
+                        <div class="icon-circle">
+                            <i class="fa-brands fa-facebook"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="icon-circle">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section>
+            <p>
+                Copyright Sally Doherty 2025
+            </p>
+            <p>All rights reserved <a href="#">Privacy Policy</a>. Website designed by <a href="#">RCS Business</a>. View the <a href="#">Photography credits</a></p>
+        </section>
+    </footer>
+    <script src="https://kit.fontawesome.com/64a3cf3d72.js" crossorigin="anonymous"></script>
+    <script>
+    // move image to screen from the right edge
+    const images = document.querySelectorAll('.reveal-img, .reveal-img-2, .reveal-img-3');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // animate once
+                }
+            });
+        }, {
+            threshold: 0.2 // 20% visible triggers animation
+        }
+    );
+
+    images.forEach(img => observer.observe(img));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+@font-face {
+	font-family: "Figtree";
+	src: url('./fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: "Figtree Italic";
+	src: url('./fonts/Figtree-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url('./fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: "Lato";
+	src: url('./fonts/Lato-Regular.ttf') format('truetype');
+}
+
+.main-menu {
+	display: none;
+}
+
+.mobile-menu {
+	display: block;
+}
+
+.m1-img {
+	display: none;
+}
+
+.underline {
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+button {
+	overflow: none;
+	border: 3px solid #D3AA3B;
+	background: transparent;
+	padding: 10px 15px;
+	font-weight: bold;
+	font-size: 16px;
+	max-width: 200px;
+}
+
+button.f-btn {
+	color: #fff;
+}
+
+nav li {
+	font-family: "Figtree";
+}
+
+nav li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	color: #D3AA3B;
+}
+
+.logotype {
+	font-weight: bold;
+	font-size: 28px;
+}
+
+.m1 .title:nth-child(1),
+.s1 .title:nth-child(1),
+.s2 .title:nth-child(1),
+.s3 .title:nth-child(1) {
+	font-family: "Montserrat", sans-serif;
+	font-size: 34px;
+	font-weight: normal;
+}
+
+.logotype,
+.m1 .title:nth-child(2), .m1 button,
+ .s1 .title:nth-child(2), .s1 button,
+  .s2 .title:nth-child(2), .s2 button,
+   .s3 .title:nth-child(2), .s3 button, 
+   footer .title  {
+	font-family: "Figtree";
+	letter-spacing: 5px;
+	
+}
+.m1 .title:nth-child(2),
+.s1 .title:nth-child(2),
+.s2 .title:nth-child(2),
+.s3 .title:nth-child(2),
+footer .title {
+	font-size: 38px;
+}
+p {
+	font-family: "Lato";
+	/*font-size: 20px;*/
+	/*max-width: 60%;*/
+}
+
+.underline {
+	border-bottom: 3px solid #438C84;
+	padding-bottom: 5px;
+}
+
+
+body, h3 {
+	margin: 0;
+}
+
+header {
+	background: #000;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 25px;
+}
+
+
+nav ul {
+	list-style-type: none;
+}
+
+nav ul li {
+	display: inline-block;
+	margin: 0 10px;
+	font-size: 14px;
+}
+
+main {
+	color: #fff;
+	min-height: 600px;
+	height: 600px;
+}
+
+main div.bck-img-wrapper {
+	background: #101012;
+	height: 100%;
+}
+
+main div.bck-img--hero {
+	background-image: url("./images/background-image-1-sally-doherty.png");
+	background-size: cover;
+	background-position: center;
+	padding: 0px 30px 0px 30px;
+}
+
+img.m1-img {
+	width: 350px;
+	object-fit: contain;
+}
+
+section.s1 .bck-img--section-1 {
+	background: url('./images/background-image-2-vocal-coach.png');
+	background-size: contain; /* Scales image to fill screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+}
+
+.s1-wrapper {
+	display: flex;
+	padding: 25px;
+	gap: 30px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.m1 .title:first-child, .s1 .title:first-child, .s2 .title:first-child, .s3 .title:first-child {
+	color: #D3AA3B;
+}
+
+.s1-elements-wrapper, .s1 img, .s2-elements-wrapper, .s2 img {
+	flex: 1;
+}
+
+.s1 img, .s2 img {
+	width: 80%;
+}
+
+.s2-wrapper {
+	display: flex;
+	gap: 30px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.s2-elements-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/*gap: 30px;*/
+}
+
+.bck-img--section-2 {
+	background: url('./images/background-image-3-live-events.png');
+	background-size: contain; /* Scales image to fill screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+	padding: 0px 30px 0px 30px;
+}
+
+.s3-wrapper {
+	margin-top: 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	gap: 35px;
+}
+
+.bck-img--section-3 {
+	background-image: url('./images/background-image-5-sally-doherty.png');
+	background-color: #020202;
+	background-size: cover; /* Scales image to fill screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+	padding: 30px;
+}
+
+.bck-overlay {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: #020202;
+  opacity: 0.72;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+.s3-elements-wrapper, .s3 button {
+	z-index: 2;
+}
+
+.grid.s3-elements-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.s3 .title:nth-child(2) {
+	color: #fff;
+	font-weight: normal;
+}
+
+.s3 button {
+	color: #fff;
+}
+
+.img-box {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay */
+.img-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect */
+.img-box:hover::after {
+  opacity: 1;
+}
+
+.f-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	justify-content: center;
+	padding: 30px;
+}
+
+footer .bck-img {
+	background-image: url('./images/background-image-4-sally-doherty.jpg');
+  background-position: center;
+  /*background-repeat: no-repeat;*/
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+footer a {
+	color: #D3AA3B;
+	font-size: 18px;
+}
+
+.social-network-links {
+	display: flex;
+	gap: 18px;
+}
+
+.social-network-links i {
+	font-size: 30px;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #D3AA3B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle i {
+  font-size: 20px;
+}
+
+footer section:nth-child(2) {
+	text-align: center;
+  padding: 15px;
+}
+
+button {
+	cursor: pointer;
+}
+
+@media screen and (min-width: 840px) {
+	.m1-img {
+		display: block;
+	}
+
+	/* change flex direction to row  */
+	.s1-wrapper {
+		flex-direction: row;
+	}
+
+	.s2-wrapper {
+		flex-direction: row-reverse;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.main-menu {
+		display: block;
+	}
+
+	.mobile-menu {
+		display: none !important;
+	}
+
+	img.m1-img {
+		display: block;
+	}
+
+	.s1-wrapper {
+		flex-direction: row;
+	}
+}
+
+
+/* ANIMATE THE IMAGES  */
+
+.reveal-img {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.reveal-img.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-img-2 {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.reveal-img-2.is-visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.reveal-img-3 {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.reveal-img-3.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
