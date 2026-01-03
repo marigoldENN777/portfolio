@@ -1,3 +1,7 @@
+:root {
+	--accent: #D3AA3B;
+}
+
 @font-face {
 	font-family: "Figtree";
 	src: url('./fonts/Figtree-VariableFont_wght.ttf') format('truetype');
@@ -59,7 +63,7 @@ nav li a {
 }
 
 nav li a:hover {
-	color: #D3AA3B;
+	color: var(--accent);
 }
 
 .logotype {
@@ -152,7 +156,7 @@ img.m1-img {
 	object-fit: contain;
 }
 
-section.s1 .bck-img--section-1 {
+section.s1.bck-img--section-1 {
 	background: url('./images/background-image-2-vocal-coach.png');
 	background-size: contain; /* Scales image to fill screen */
   background-position: center; /* Centers the image */
@@ -168,7 +172,7 @@ section.s1 .bck-img--section-1 {
 }
 
 .m1 .title:first-child, .s1 .title:first-child, .s2 .title:first-child, .s3 .title:first-child {
-	color: #D3AA3B;
+	color: var(--accent);
 }
 
 .s1-elements-wrapper, .s1 img, .s2-elements-wrapper, .s2 img {
@@ -241,6 +245,10 @@ section.s1 .bck-img--section-1 {
 	gap: 20px;
 }
 
+.s3 img, .s2 img {
+	max-width: 500px;
+}
+
 .s3 .title:nth-child(2) {
 	color: #fff;
 	font-weight: normal;
@@ -286,7 +294,7 @@ footer .bck-img {
 }
 
 footer a {
-	color: #D3AA3B;
+	color: var(--accent);
 	font-size: 18px;
 }
 
@@ -303,7 +311,7 @@ footer a {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 2px solid #D3AA3B;
+  border: 2px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,6 +342,10 @@ button {
 
 	.s2-wrapper {
 		flex-direction: row-reverse;
+	}
+
+	.grid.s3-elements-wrapper {
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
