@@ -1,5 +1,6 @@
 :root {
 	--accent: #D3AA3B;
+	--btn_two: #438C84;
 }
 
 @font-face {
@@ -47,6 +48,20 @@ button {
 	font-weight: bold;
 	font-size: 16px;
 	max-width: 200px;
+}
+
+button:hover {
+	transition: all .3s;
+	background-color: var(--accent);
+	border-color: #FFF;
+	color: #FFF;
+}
+
+.s1 button:hover, .s2 button:hover {
+	transition: all .3s;
+	background-color: var(--btn_two);
+	border-color: var(--btn_two);
+	color: #FFF;
 }
 
 button.f-btn {
