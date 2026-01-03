@@ -286,6 +286,10 @@ section.s1.bck-img--section-1 {
 	padding: 30px;
 }
 
+footer .f--section .bck-img {
+	min-height: 300px;
+}
+
 footer .bck-img {
 	background-image: url('./images/background-image-4-sally-doherty.jpg');
   background-position: center;
