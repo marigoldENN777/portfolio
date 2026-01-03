@@ -81,6 +81,10 @@ nav li a:hover {
 	color: var(--accent);
 }
 
+footer a {
+	text-decoration: none;
+}
+
 .logotype {
 	font-weight: bold;
 	font-size: 28px;
