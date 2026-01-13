@@ -1,0 +1,36 @@
+.d-flex {
+	display: flex;
+}
+
+.f-4 {
+	flex: 4;
+}
+
+.f-6 {
+	flex: 6;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.mx-4 {
+	margin: 0 4px;
+}
+
+.m-14 {
+	margin: 14px;
+}
+
+.p-12 {
+	padding: 12px;
+}
+
+.b-grey {
+	border: 1px solid #364153;
+	border-radius: 5px;
+}
