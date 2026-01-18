@@ -5,245 +5,281 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neven Josipović — Portfolio</title>
-    <meta name="description" content="Web developer using PHP, MySQL, and JS. With work experience as a junior developer.">
+    <meta name="description" content="Neven Josipović – Web developer specializing in PHP, MySQL, and JavaScript. With work experience in web development. The portfolio features interactive UI components, animations, and real-world projects.">
     <link rel="icon" href="/favicon.jpg">
-
     <style>
-    /* ===== New Portfolio Style: Dark Glass + Gradient ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-:root{
-  --bg0:#070A12;
-  --bg1:#0B1020;
-  --text:#EAF0FF;
-  --muted:rgba(234,240,255,.72);
-  --muted2:rgba(234,240,255,.55);
+    :root {
+        /* Page */
+        --page-bg: #f6f7fb;
+        --page-text: #0f172a;
+        --page-muted: rgba(15, 23, 42, .70);
 
-  --card:rgba(255,255,255,.06);
-  --card2:rgba(255,255,255,.08);
-  --border:rgba(255,255,255,.12);
+        /* Blue system (same colors, inverted roles) */
+        --blue-main: #4953c1;
+        --blue-dark: #2f357e;
+        --blue-light: #e9ecff;
 
-  --accent:#7C5CFF;
-  --accent2:#37D7FF;
+        /* Cards: dark */
+        --card-bg: var(--blue-dark);
+        --card-bg2: #232862;
+        --card-border: rgba(233, 236, 255, .18);
+        --card-border-strong: rgba(233, 236, 255, .38);
 
-  --shadow: 0 18px 60px rgba(0,0,0,.45);
-  --radius: 18px;
-}
+        /* Text on dark cards */
+        --on-card: var(--blue-light);
+        --on-card-muted2: rgba(233, 236, 255, .72);
 
-*{ box-sizing:border-box; }
-
-html, body { height:100%; }
-
-body{
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  margin:0;
-  color:var(--text);
-  line-height:1.6;
-  background: none;
-}
-
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-
-  background:
-    radial-gradient(1000px 500px at 30% 20%, rgba(124,92,255,.18), transparent 65%),
-    radial-gradient(1000px 500px at 80% 30%, rgba(55,215,255,.14), transparent 65%),
-    linear-gradient(180deg, #070A12, #0B1020);
-
-  background-repeat: no-repeat;
-}
-
-main, section {
-  position: relative;
-  z-index: 1;
-}
+        /* Accent (titles + links) */
+        --accent: var(--blue-light);
 
 
-/* ===== Header ===== */
-header{
-  text-align:center;
-  padding: 4.2rem 1.25rem 2.2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-header h1{
-  margin:0 0 .35rem;
-  font-size: clamp(2.1rem, 4vw, 3.1rem);
-  letter-spacing: -0.03em;
-  font-weight: 800;
-}
-
-header p{
-  margin:0;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
-
-/* subtle underline */
-header p::after{
-  content:"";
-  display:block;
-  width: 120px;
-  height: 2px;
-  margin: 1.1rem auto 0;
-  background: linear-gradient(90deg, transparent, rgba(55,215,255,.9), rgba(124,92,255,.9), transparent);
-  opacity: .9;
-}
-
-/* ===== Main grid ===== */
-main{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.25rem;
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-}
-
-/* ===== Project cards ===== */
-.project{
-  background: linear-gradient(180deg, var(--card), rgba(255,255,255,.04));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.25rem 1.1rem;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
-  position: relative;
-  overflow:hidden;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-}
-
-/* glossy highlight */
-.project::before{
-  content:"";
-  position:absolute;
-  inset:-40% -40% auto -40%;
-  height: 140%;
-  background:
-    radial-gradient(closest-side, rgba(255,255,255,.16), transparent 65%);
-  transform: rotate(12deg);
-  opacity:.35;
-  pointer-events:none;
-}
-
-.project:hover{
-  transform: translateY(-6px);
-  border-color: rgba(55,215,255,.28);
-  background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.04));
-  box-shadow: var(--shadow);
-}
-
-/* Titles */
-.project h2{
-  margin: 0 0 .5rem;
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(90deg, var(--accent2), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Description */
-.project p{
-  margin: 0;
-  color: var(--muted2);
-  font-size: .95rem;
-}
-
-/* Links (buttons) */
-.project a{
-  display:inline-flex;
-  align-items:center;
-  gap:.45rem;
-  margin-top: .95rem;
-  margin-right: .55rem;
-
-  padding: .62rem .8rem;
-  border-radius: 999px;
-
-  text-decoration:none;
-  font-weight: 700;
-  font-size: .92rem;
-
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-
-  transition: transform .15s ease, background .15s ease, border-color .15s ease;
-}
-
-.project a:hover{
-  transform: translateY(-1px);
-  background: rgba(55,215,255,.10);
-  border-color: rgba(55,215,255,.30);
-}
-
-/* ===== Section styling for "JS animations" ===== */
-section{
-  max-width: 1100px;
-  margin: 1.8rem auto 0;
-  padding: 0 1.25rem 1.25rem;
-}
-
-section > h2{
-  margin: 1.2rem 0 1rem;
-  font-size: 1.25rem;
-  letter-spacing:-0.02em;
-  color: var(--text);
-  opacity: .95;
-}
-
-/* Make the section cards also grid, without changing your HTML */
-section{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-section .project{
-  margin: 0;
-}
-
-/* If you want section projects in a grid like main */
-@media (min-width: 720px){
-  section{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
-  }
-  section > h2{
-    grid-column: 1 / -1;
-  }
-}
-
-/* ===== Footer ===== */
-footer{
-  text-align:center;
-  padding: 2.2rem 1rem 2.6rem;
-  color: rgba(234,240,255,.55);
-  font-size: .92rem;
-}
-
-/* ===== Accessibility: reduce motion ===== */
-@media (prefers-reduced-motion: reduce){
-  .project, .project a { transition:none; }
-  .project:hover, .project a:hover { transform:none; }
-}
-
-.section-title{
-  grid-column: 1 / -1;
-  margin: .5rem 0 1.1rem;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  opacity: .95;
-}
 
 
+        /* Radius + shadow */
+        --radius: 18px;
+        --shadow: 0 16px 55px rgba(15, 23, 42, .18);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        margin: 0;
+        color: var(--page-text);
+        line-height: 1.6;
+        background: var(--page-bg);
+    }
+
+    /* Soft “corporate paper” noise (very subtle) */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+            radial-gradient(900px 500px at 15% 0%, rgba(124, 92, 255, .08), transparent 60%),
+            radial-gradient(900px 500px at 85% 10%, rgba(124, 92, 255, .06), transparent 62%),
+            linear-gradient(180deg, #ffffff, var(--page-bg));
+    }
+
+    /* ===== Header ===== */
+    header {
+        text-align: center;
+        padding: 4.0rem 1.25rem 2.0rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        margin: 0 0 .35rem;
+        font-size: clamp(2.05rem, 4vw, 3.05rem);
+        letter-spacing: -0.03em;
+        font-weight: 800;
+
+        /* Name colored as requested */
+        color: var(--blue-dark);
+    }
+
+    header p {
+        margin: 0;
+        color: var(--page-muted);
+        font-size: 1.05rem;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 1.25rem;
+    }
+
+    /* Keep the border below Web Developer + subtle accent detail */
+    header p::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0.45rem;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--blue-dark);
+    }
+
+    /* ===== Main grid ===== */
+    main,
+    section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.25rem;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.2rem;
+    }
+
+    /* Section title that spans grid */
+    .section-title {
+        grid-column: 1 / -1;
+        margin: .25rem 0 1.1rem;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+        color: var(--page-muted);
+        opacity: .95;
+    }
+
+    /* ===== Dark glowing project cards ===== */
+    .project {
+        color: var(--on-card);
+        background: linear-gradient(180deg, var(--card-bg), var(--card-bg2));
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 1.25rem 1.25rem 1.1rem;
+
+        position: relative;
+        overflow: hidden;
+
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    /* Card glow halo (corporate controlled glow) */
+    .project::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        pointer-events: none;
+        background:
+            radial-gradient(500px 240px at 18% 12%, rgba(124, 92, 255, .22), transparent 60%),
+            radial-gradient(500px 240px at 82% 0%, rgba(124, 92, 255, .14), transparent 62%);
+        opacity: .70;
+        filter: blur(2px);
+    }
+
+    /* Very subtle glossy sweep (kept, toned down) */
+    .project::before {
+        content: "";
+        position: absolute;
+        inset: -40% -40% auto -40%;
+        height: 140%;
+        background: radial-gradient(closest-side, rgba(255, 255, 255, .14), transparent 65%);
+        transform: rotate(12deg);
+        opacity: .25;
+        pointer-events: none;
+    }
+
+    .project:hover {
+        transform: translateY(-6px);
+        border-color: var(--card-border-strong);
+        box-shadow:
+            var(--shadow),
+            0 0 42px rgba(124, 92, 255, .22);
+    }
+
+    /* Titles (accent color) */
+    .project h2 {
+        margin: 0 0 .5rem;
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+
+        /* project titles colored */
+        color: var(--accent);
+    }
+
+    /* Description */
+    .project p {
+        margin: 0;
+        color: var(--on-card-muted2);
+        font-size: .95rem;
+    }
+
+    /* Links (accent color + same hover family) */
+    .project a {
+        display: inline-flex;
+        align-items: center;
+        gap: .45rem;
+        margin-top: .95rem;
+        margin-right: .55rem;
+
+        padding: .62rem .82rem;
+        border-radius: 999px;
+
+        text-decoration: none;
+        font-weight: 700;
+        font-size: .92rem;
+
+        /* links colored */
+        color: #ffffff;
+        border: 1px solid rgba(73, 83, 193, .45);
+        background: var(--blue-main);
+
+        transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+
+    .project a:hover {
+        transform: translateY(-1px);
+        background: var(--blue-main);
+        border-color: rgba(233, 236, 255, .55);
+        box-shadow: 0 0 24px rgba(233, 236, 255, .35);
+    }
+
+    /* ===== JS animations section ===== */
+    section {
+        margin-top: .4rem;
+        padding-top: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    section>h2 {
+        margin: 1.2rem 0 .4rem;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+        color: var(--page-text);
+        opacity: .95;
+    }
+
+    @media (min-width: 720px) {
+        section {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+        }
+
+        section>h2 {
+            grid-column: 1 / -1;
+        }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        text-align: center;
+        padding: 2.2rem 1rem 2.6rem;
+        color: rgba(15, 23, 42, .55);
+        font-size: .92rem;
+    }
+
+    /* ===== Accessibility: reduce motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+
+        .project,
+        .project a {
+            transition: none;
+        }
+
+        .project:hover,
+        .project a:hover {
+            transform: none;
+        }
+    }
     </style>
 </head>
 
@@ -254,8 +290,6 @@ footer{
     </header>
     <main>
         <h2 class="section-title">Projects</h2>
-
-
         <div class="project">
             <h2>A website for SAW</h2>
             <p>A responsive website for safety at work completely designed by me and styled with Tailwind CSS</p>
@@ -270,12 +304,12 @@ footer{
         </div>
         <div class="project">
             <h2>Python Send Mail</h2>
-            <p>A simple mail your order python script</p>
+            <p>A simple mail sender for orders. A Python script</p>
             <a href="email_sender" target="_blank">View Project →</a>
         </div>
         <div class="project">
-            <h2>Booking App</h2>
-            <p>A booking application. Used to book to a calendar your term for something</p>
+            <h2>Booking Terms</h2>
+            <p>A simple booking functionality</p>
             <a href="online_booking_dev/public" target="_blank">View Project →</a>
         </div>
         <div class="project">
@@ -285,43 +319,35 @@ footer{
         </div>
         <div class="project">
             <h2>Singing Classes</h2>
-            <p>A website for singing classes for people interested in getting better at singing</p>
+            <p>A website for singing classes</p>
             <a href="designs/music_classes.html" target="_blank">View Project →</a>
         </div>
         <div class="project">
-            <h2>Timer One</h2>
-            <p>A standard timer that countdown intended to be part of task management project</p>
-            <a href="timer/timer.html" target="_blank">View Project →</a>
-        </div>
-        <div class="project">
-            <h2>Timer Two</h2>
+            <h2>Timer</h2>
             <p>Timer set using the scroll with a modern design like on Android phones</p>
             <a href="timer/scroll_timer.html" target="_blank">View Project →</a>
         </div>
     </main>
     <section>
-        <h2>JS animations</h2>
+        <h2 class="section-title">JS animations</h2>
         <div class="project">
             <h2>JS Animation 4</h2>
             <p>An experimental generative art piece using canvas-sketch.</p>
             <a href="sketch4/sketch4.html" target="_blank">View Project →</a>
         </div>
-        <!-- random comment -->
         <div class="project">
             <h2>JS Animation 3</h2>
-            <p>An experimental radial generative art animation.</p>
+            <p>An experimental generative art piece using canvas-sketch.</p>
             <a href="sketch3/" target="_blank">View Project →</a>
-            <!-- Changed the href value -->
         </div>
-        <!-- Hello world -->
         <div class="project">
             <h2>JS Animation 2</h2>
-            <p>A generative animation built using CanvasSketch and JavaScript.</p>
+            <p>An experimental generative art piece using canvas-sketch.</p>
             <a href="sketch2/" target="_blank">View Project →</a>
         </div>
         <div class="project">
             <h2>JS Animation 1</h2>
-            <p>A generative art demo using the HTML5 Canvas API.</p>
+            <p>An experimental generative art piece using canvas-sketch.</p>
             <a href="grid_animation/" target="_blank">View Project →</a>
         </div>
     </section>
