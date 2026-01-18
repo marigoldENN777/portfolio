@@ -2,271 +2,332 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neven Josipović — Portfolio</title>
-  <style>
-    :root {
-      --bg: #f8f9fa;
-      --text: #222;
-      --accent: #0078ff;
-      --card-bg: #fff;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neven Josipović — Portfolio</title>
+    <meta name="description" content="Web developer using PHP, MySQL, and JS. With work experience as a junior developer.">
+    <link rel="icon" href="/favicon.jpg">
 
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    <style>
+    /* ===== New Portfolio Style: Dark Glass + Gradient ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-    header {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-    }
+:root{
+  --bg0:#070A12;
+  --bg1:#0B1020;
+  --text:#EAF0FF;
+  --muted:rgba(234,240,255,.72);
+  --muted2:rgba(234,240,255,.55);
 
-    header h1 {
-      margin-bottom: 0.5rem;
-      font-size: 2rem;
-      font-weight: 700;
-    }
+  --card:rgba(255,255,255,.06);
+  --card2:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
 
-    header p {
-      font-size: 1.1rem;
-      color: #555;
-    }
+  --accent:#7C5CFF;
+  --accent2:#37D7FF;
 
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+  --shadow: 0 18px 60px rgba(0,0,0,.45);
+  --radius: 18px;
+}
 
-    .project {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 3px 8px var(--shadow);
-      text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+*{ box-sizing:border-box; }
 
-    .project:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px var(--shadow);
-    }
+html, body { height:100%; }
 
-    .project h2 {
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
+body{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin:0;
+  color:var(--text);
+  line-height:1.6;
+  background: none;
+}
 
-    .project p {
-      font-size: 0.95rem;
-      color: #555;
-    }
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
 
-    .project a {
-      display: block;
-      margin-top: 1rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
+  background:
+    radial-gradient(1000px 500px at 30% 20%, rgba(124,92,255,.18), transparent 65%),
+    radial-gradient(1000px 500px at 80% 30%, rgba(55,215,255,.14), transparent 65%),
+    linear-gradient(180deg, #070A12, #0B1020);
 
-    .project a:hover {
-      color: #004ea6;
-    }
+  background-repeat: no-repeat;
+}
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #777;
-      font-size: 0.9rem;
-    }
-  </style>
+main, section {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ===== Header ===== */
+header{
+  text-align:center;
+  padding: 4.2rem 1.25rem 2.2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header h1{
+  margin:0 0 .35rem;
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+header p{
+  margin:0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* subtle underline */
+header p::after{
+  content:"";
+  display:block;
+  width: 120px;
+  height: 2px;
+  margin: 1.1rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(55,215,255,.9), rgba(124,92,255,.9), transparent);
+  opacity: .9;
+}
+
+/* ===== Main grid ===== */
+main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+/* ===== Project cards ===== */
+.project{
+  background: linear-gradient(180deg, var(--card), rgba(255,255,255,.04));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1.1rem;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  position: relative;
+  overflow:hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+
+/* glossy highlight */
+.project::before{
+  content:"";
+  position:absolute;
+  inset:-40% -40% auto -40%;
+  height: 140%;
+  background:
+    radial-gradient(closest-side, rgba(255,255,255,.16), transparent 65%);
+  transform: rotate(12deg);
+  opacity:.35;
+  pointer-events:none;
+}
+
+.project:hover{
+  transform: translateY(-6px);
+  border-color: rgba(55,215,255,.28);
+  background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.04));
+  box-shadow: var(--shadow);
+}
+
+/* Titles */
+.project h2{
+  margin: 0 0 .5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Description */
+.project p{
+  margin: 0;
+  color: var(--muted2);
+  font-size: .95rem;
+}
+
+/* Links (buttons) */
+.project a{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin-top: .95rem;
+  margin-right: .55rem;
+
+  padding: .62rem .8rem;
+  border-radius: 999px;
+
+  text-decoration:none;
+  font-weight: 700;
+  font-size: .92rem;
+
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.project a:hover{
+  transform: translateY(-1px);
+  background: rgba(55,215,255,.10);
+  border-color: rgba(55,215,255,.30);
+}
+
+/* ===== Section styling for "JS animations" ===== */
+section{
+  max-width: 1100px;
+  margin: 1.8rem auto 0;
+  padding: 0 1.25rem 1.25rem;
+}
+
+section > h2{
+  margin: 1.2rem 0 1rem;
+  font-size: 1.25rem;
+  letter-spacing:-0.02em;
+  color: var(--text);
+  opacity: .95;
+}
+
+/* Make the section cards also grid, without changing your HTML */
+section{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+section .project{
+  margin: 0;
+}
+
+/* If you want section projects in a grid like main */
+@media (min-width: 720px){
+  section{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  section > h2{
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding: 2.2rem 1rem 2.6rem;
+  color: rgba(234,240,255,.55);
+  font-size: .92rem;
+}
+
+/* ===== Accessibility: reduce motion ===== */
+@media (prefers-reduced-motion: reduce){
+  .project, .project a { transition:none; }
+  .project:hover, .project a:hover { transform:none; }
+}
+
+.section-title{
+  grid-column: 1 / -1;
+  margin: .5rem 0 1.1rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  opacity: .95;
+}
+
+
+    </style>
 </head>
 
 <body>
-  <header>
-    <h1>Neven Josipović</h1>
-    <p>Web Developer</p>
-  </header>
-
-  <main>
-    <div class="project">
-      <h2>A website for SAW</h2>
-      <p>A responsive website for safety at work completely designed by me and styled with Tailwind CSS</p>
-      <a href="svision/public/index.html" target="_blank">View Project →</a>
-    </div>
-    <div class="project">
-      <h2>Singing Classes 2</h2>
-      <p>A copy of a responsive website for a singer to serve as a business page</p>
-      <a href="music_classes_Shelly/index.html" target="_blank">View Project →</a>
-      <a href="https://github.com/marigoldENN777/portfolio/tree/main/music_classes_Shelly" target="_blank">View Github →</a>
-      <a href="https://sallydoherty.com/">Link to original page →</a>
-    </div>
-    <div class="project">
-      <h2>Python Send Mail</h2>
-      <p>A simple mail your order python script</p>
-      <a href="email_sender" target="_blank">View Project →</a>
-    </div>
-    <div class="project">
-      <h2>JS Animation 4</h2>
-      <p>An experimental generative art piece using canvas-sketch.</p>
-      <a href="sketch4/sketch4.html" target="_blank">View Project →</a>
-  </div>
-  <!-- random comment -->
-
-  <div class="project">
-    <h2>JS Animation 3</h2>
-    <p>An experimental radial generative art animation.</p>
-    <a href="sketch3/" target="_blank">View Project →</a>
-    <!-- Changed the href value -->
-  </div>
-  <!-- Hello world -->
-  <div class="project">
-    <h2>JS Animation 2</h2>
-    <p>A generative animation built using CanvasSketch and JavaScript.</p>
-    <a href="sketch2/" target="_blank">View Project →</a>
-  </div>
-
-    <div class="project">
-      <h2>JS Animation 1</h2>
-      <p>A generative art demo using the HTML5 Canvas API.</p>
-      <a href="grid_animation/" target="_blank">View Project →</a>
-    </div>
+    <header>
+        <h1>Neven Josipović</h1>
+        <p>Web Developer</p>
+    </header>
+    <main>
+        <h2 class="section-title">Projects</h2>
 
 
-
-    <div class="project">
-      <h2>Booking App</h2>
-      <p>A booking application. Used to book to a calendar your term for something</p>
-      <a href="online_booking_dev/public" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Typewriter</h2>
-      <p>An animated landing page using typewriter to write out each letter one by one</p>
-      <a href="typewriter/index.html" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Shoe Repair</h2>
-      <p>A website for services of repairing shoes in Belgrade</p>
-      <a href="shoe_repair/index.html" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Singing Classes</h2>
-      <p>A website for singing classes for people interested in getting better at singing</p>
-      <a href="designs/music_classes.html" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Timer One</h2>
-      <p>A standard timer that countdown intended to be part of task management project</p>
-      <a href="timer/timer.html" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Timer Two</h2>
-      <p>Timer set using the scroll with a modern design like on Android phones</p>
-      <a href="timer/scroll_timer.html" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Contact Form</h2>
-      <p>Stylish and responsive contact form with validation and password toggle.</p>
-      <a href="contact_form/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Numbers Web Animation</h2>
-      <p>Animated number grid that counts in sequence — ideal for stats and landing pages.</p>
-      <a href="numbers_web_animation/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Product Slider</h2>
-      <p>Interactive slider with descriptive text and zoom feature for product showcases.</p>
-      <a href="product_slider/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Remove Background Tool</h2>
-      <p>Image uploader with background removal and download functionality.</p>
-      <a href="remove_background/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Sign-Up Form</h2>
-      <p>Modern registration form with show/hide password toggle and email suggestions.</p>
-      <a href="signup_form/" target="_blank">View Project →</a>
-    </div>
-
-    <div class="project">
-      <h2>Subscription Form</h2>
-      <p>Clean email subscription form with validation and dynamic feedback.</p>
-      <a href="subscription_form/" target="_blank">View Project →</a>
-    </div>
-  </main>
-  <section style="max-width: 900px; margin: 2rem auto; padding: 1rem;">
-    <h2 style="text-align: center; margin-bottom: 1.5rem;">Other Projects</h2>
-
-    <h3>Python</h3>
-    <ul>
-      <li>
-        <strong>Email Sender:</strong>
-        A Python app for sending emails via SMTP —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/python_projects/email_sender" target="_blank">GitHub Repository</a>
-      </li>
-      <li>
-        <strong>Flask Web App:</strong>
-        A micro web application using Flask routes and templates —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/python_projects/flask_app" target="_blank">GitHub Repository</a>
-      </li>
-      <li>
-        <strong>Number Guessing Game:</strong>
-        A simple interactive CLI game —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/python_projects/numbers_guessing_game" target="_blank">GitHub Repository</a>
-      </li>
-      <li>
-        <strong>Sound Recording App:</strong>
-        A Python script to record audio from the microphone —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/python_projects/sound_recording_app" target="_blank">GitHub Repository</a>
-      </li>
-    </ul>
-
-    <h3>TypeScript</h3>
-    <ul>
-      <li>
-        <strong>Calculator:</strong>
-        A TypeScript-based calculator for basic operations —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/typescript_projects/calculator" target="_blank">GitHub Repository</a>
-      </li>
-      <li>
-        <strong>To-Do List:</strong>
-        A task manager with add/edit/delete and local storage —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/typescript_projects/to_do_list" target="_blank">GitHub Repository</a>
-      </li>
-      <li>
-        <strong>User Edit Panel:</strong>
-        An interface for editing and validating user data —
-        <a href="https://github.com/marigoldENN777/portfolio/tree/main/typescript_projects/users_edit_panel" target="_blank">GitHub Repository</a>
-      </li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2025 Neven Josipović · Built with HTML, CSS & JavaScript
-  </footer>
+        <div class="project">
+            <h2>A website for SAW</h2>
+            <p>A responsive website for safety at work completely designed by me and styled with Tailwind CSS</p>
+            <a href="svision/public/index.html" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Singing Classes 2</h2>
+            <p>A copy of a responsive website for a singer to serve as a business page</p>
+            <a href="music_classes_Shelly/index.html" target="_blank">View Project →</a>
+            <a href="https://github.com/marigoldENN777/portfolio/tree/main/music_classes_Shelly" target="_blank">View Github →</a>
+            <a href="https://sallydoherty.com/" target="_blank">Link to original page →</a>
+        </div>
+        <div class="project">
+            <h2>Python Send Mail</h2>
+            <p>A simple mail your order python script</p>
+            <a href="email_sender" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Booking App</h2>
+            <p>A booking application. Used to book to a calendar your term for something</p>
+            <a href="online_booking_dev/public" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Shoe Repair</h2>
+            <p>A website for services of repairing shoes in Belgrade</p>
+            <a href="shoe_repair/index.html" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Singing Classes</h2>
+            <p>A website for singing classes for people interested in getting better at singing</p>
+            <a href="designs/music_classes.html" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Timer One</h2>
+            <p>A standard timer that countdown intended to be part of task management project</p>
+            <a href="timer/timer.html" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>Timer Two</h2>
+            <p>Timer set using the scroll with a modern design like on Android phones</p>
+            <a href="timer/scroll_timer.html" target="_blank">View Project →</a>
+        </div>
+    </main>
+    <section>
+        <h2>JS animations</h2>
+        <div class="project">
+            <h2>JS Animation 4</h2>
+            <p>An experimental generative art piece using canvas-sketch.</p>
+            <a href="sketch4/sketch4.html" target="_blank">View Project →</a>
+        </div>
+        <!-- random comment -->
+        <div class="project">
+            <h2>JS Animation 3</h2>
+            <p>An experimental radial generative art animation.</p>
+            <a href="sketch3/" target="_blank">View Project →</a>
+            <!-- Changed the href value -->
+        </div>
+        <!-- Hello world -->
+        <div class="project">
+            <h2>JS Animation 2</h2>
+            <p>A generative animation built using CanvasSketch and JavaScript.</p>
+            <a href="sketch2/" target="_blank">View Project →</a>
+        </div>
+        <div class="project">
+            <h2>JS Animation 1</h2>
+            <p>A generative art demo using the HTML5 Canvas API.</p>
+            <a href="grid_animation/" target="_blank">View Project →</a>
+        </div>
+    </section>
+    <footer>
+        © 2025 Neven Josipović · Built with HTML, CSS & JavaScript
+    </footer>
 </body>
 
 </html>

@@ -11,6 +11,8 @@
     <meta name="robots" content="index">
     <link rel="canonical" href="https://www.yourcompany.com/">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="https://kit.fontawesome.com/64a3cf3d72.js" crossorigin="anonymous"></script>
 </head>
 
@@ -33,7 +35,7 @@
                     <span class="font-medium opacity-90">VISION</span>
                 </a>
                 <!-- NAV LINKS (mobile-first: compact) -->
-                <ul class="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+                <ul class="hidden md:flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700 ">
                     <li>
                         <a href="#bzr" data-link class="rounded-lg px-2 py-1 hover:text-blue-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 data-[active=true]:text-blue-600">
                             Usluge
@@ -50,6 +52,7 @@
                         </a>
                     </li>
                 </ul>
+                <i class="fa-solid fa-bars block md:hidden"></i>
             </nav>
         </header>
         <div id="home" data-scroll class="h-[1px]"></div>

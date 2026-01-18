@@ -5,199 +5,496 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Popravke Obuće Sava - Popravka Cipela Beograd</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#001427" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
     <style>
-        body {
-            margin: 0;
-            font-family: "Open Sans", sans-serif;
-            background-color: #001427;
-            /* dark purple */
-            color: #FEFCFB;
-            /* light lavender */
-        }
+    /* ===== Base ===== */
+    body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        background-color: #001427;
+        color: #FEFCFB;
+        line-height: 1.6;
+    }
 
-        .f-change {
-            font-family: "Lato", sans-serif;
-        }
+    .f-change {
+        font-family: "Lato", sans-serif;
+    }
 
-        .container {
-            max-width: 90%;
-            margin: 0 auto;
-            width: 1200px;
-        }
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    /* ===== Header ===== */
+    header {
+        margin-top: 24px;
+        /* udaljenost od vrha */
+        padding: 22px 24px;
+
+        background: rgba(255, 255, 255, 0.04);
+        /* ISTO kao kartice */
+        border: 1px solid rgba(255, 255, 255, .10);
+        border-radius: 14px;
+
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+
+
+
+    header h1 {
+        margin: 0;
+        font-size: 2.3rem;
+        letter-spacing: 1.5px;
+
+        color: rgba(212, 175, 55, .95);
+        /* zlatni akcent */
+        text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+    }
+
+
+    /* ===== Hero ===== */
+    .hero {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 20px;
+        margin-top: 18px;
+        border-radius: 14px;
+
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero img {
+        width: 300px;
+        max-width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        height: auto;
+        display: block;
+    }
+
+    .hero-text {
+        max-width: 560px;
+    }
+
+    .hero-text h2 {
+        font-size: 1.8rem;
+        margin: 0 0 1rem 0;
+        line-height: 1.2;
+    }
+
+    .quote {
+        margin: 14px 0 0 0;
+        padding: 14px 16px;
+        border-left: 4px solid rgba(212, 175, 55, 0.9);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        font-style: italic;
+        color: rgba(254, 252, 251, 0.92);
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: #FEFCFB;
+        text-decoration: none;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.10);
+        border-color: rgba(255, 255, 255, 0.22);
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #C08A5A, #D4AF37);
+        color: #0C120C;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        filter: brightness(1.05);
+    }
+
+    /* ===== About + Services ===== */
+    .about {
+        margin-top: 22px;
+        border-radius: 14px;
+    }
+
+    .about .text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .about-image {
+        width: 300px;
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 12px;
+    }
+
+    .services {
+        padding: 20px;
+        /* fixes "no margins" feel */
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .services ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services li {
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        line-height: 1.4;
+        position: relative;
+    }
+
+    .services li::before {
+        content: "✓";
+        font-weight: 900;
+        margin-right: 10px;
+        color: rgba(212, 175, 55, 0.95);
+    }
+
+    .xw-100 {
+        width: 70%;
+        margin-left: auto;
+    }
+
+    /* ===== Guarantee / Process ===== */
+    .guarantee {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        margin-top: 18px;
+    }
+
+    /* Fix: prevent image resizing when FAQ opens */
+    .guarantee img {
+        flex: 0 0 300px;
+        max-width: 300px;
+        width: 300px;
+        height: auto;
+        object-fit: contain;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 12px;
+        display: block;
+    }
+
+    .guarantee>div {
+        flex: 1 1 auto;
+        min-width: 0;
+        /* prevents flex overflow weirdness */
+    }
+
+    .process {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .process h3 {
+        margin-top: 0;
+    }
+
+    /* ===== FAQ Accordion ===== */
+    .faq {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+    }
+
+    .faq details {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 12px;
+        padding: 10px 12px;
+    }
+
+    .faq summary {
+        cursor: pointer;
+        list-style: none;
+        font-weight: 700;
+        font-family: "Lato", sans-serif;
+    }
+
+    .faq summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq summary::after {
+        content: "＋";
+        float: right;
+        opacity: 0.9;
+    }
+
+    .faq details[open] summary::after {
+        content: "－";
+    }
+
+    .faq details p {
+        margin: 10px 0 0 0;
+        color: rgba(254, 252, 251, 0.92);
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 1.2rem;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: "Lato", sans-serif;
+
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        border-radius: 14px;
+        padding: 1.5rem 2rem;
+    }
+
+    .contact a {
+        border-bottom: 1px dashed rgba(212, 175, 55, 0.7);
+    }
+
+    .contact a:hover {
+        border-bottom-style: solid;
+        text-decoration: none;
+    }
+
+    footer {
+        margin-top: 3rem;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #fff;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+        .services ul {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
         header {
-            background-color: #0C120C;
-            /* darker purple */
-            padding: 1rem 2rem;
-            text-align: center;
-            margin-top: 18px;
+            padding: 1rem 1rem;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-size: 2rem;
         }
 
         .hero {
-            display: flex;
-            /* flex-wrap: wrap; */
-            align-items: center;
-            /* justify-content: center; */
-            /*! padding: 2rem; */
-            gap: 2rem;
-            padding: 20px;
+            flex-direction: column;
+            padding: 16px;
         }
 
-        .hero img {
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        .hero-actions {
+            width: 100%;
         }
 
-        .hero-text {
-            max-width: 500px;
-        }
-
-        .hero-text h2 {
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .about-image {
-            width: 300px;
-            padding: 20px;
-        }
-
-        .services ul {
-            padding: 20px;
-        }
-
-        .guarantee img {
-            width: 300px;
-            height: auto;
-            object-fit: cover;
-            padding: 20px;
-        }
-
-        .guarantee {
-            display: flex;
-        }
-
-        .contact {
-            background-color: #0C120C;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            font-size: 1.2rem;
-            margin-top: 40px;
-            border-radius: 8px;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            font-family: "Lato", sans-serif;
-        }
-
-        footer {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #fff;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-
-        @media (max-width: 600px) {
-            .hero {
-                flex-direction: column;
-            }
-
-            .hero img {
-                max-width: 100%;
-            }
-
-            .about .text {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .about .text h3 {
-                font-weight: normal;
-                text-align: center;
-                margin-bottom: 18px;
-                margin-top: 0;
-                font-size: 17px;
-            }
-
-            .hero-text p {
-                font-size: 17px;
-            }
-
-            .services ul {
-                text-align: center;
-                list-style: none;
-                padding: 0;
-                font-size: 18px;
-            }
-
-            .container {
-                max-width: 90%;
-            }
-
-            .guarantee img {
-                max-width: 90%;
-                height: 295px;
-                object-fit: cover;
-                margin: 0 auto;
-            }
-
-            .guarantee {
-                text-align: center;
-                flex-direction: column;
-                text-align: left;
-            }
-
-            .process {
-                margin-top: 30px;
-            }
-
-            .the-process h3 {
-                margin-top: 26px;
-            }
-
-            .xw-100 {
-                width: 90% !important;
-                margin: 20px auto 30px auto !important;
-            }
-        }
-
-        .about-image {
-            max-width: 90%;
+        .btn {
+            width: 100%;
         }
 
         .about .text {
-            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
+        .hero-text p {
+            font-size: 17px;
+        }
+
+        /* keep nice spacing on mobile */
+        .services {
+            padding: 12px;
+        }
+
+        .guarantee {
+            flex-direction: column;
+        }
+
+        .guarantee img {
+            width: 100%;
+            max-width: 100%;
+            flex: 0 0 auto;
+            height: auto !important;
+            object-fit: contain;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .process {
+            margin-top: 16px;
+        }
+
+        .xw-100 {
+            width: 90% !important;
+            margin: 20px auto 30px auto !important;
+        }
+    }
+
+    /* ===== Header redesign A: sticky top bar ===== */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 14px 0;
+        background: rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        /* sticky bar = ravno */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+    }
+
+    .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        box-sizing: border-box;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Lato", sans-serif;
+        font-weight: 900;
+        letter-spacing: .5px;
+        color: #0C120C;
+        background: linear-gradient(135deg, #C08A5A, #D4AF37);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+        flex: 0 0 auto;
+    }
+
+    .brand-text {
+        min-width: 0;
+    }
+
+    .brand-title {
+        margin: 0;
+        font-size: 1.35rem;
+        letter-spacing: .6px;
+        color: #FEFCFB;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .brand-subtitle {
+        margin: 2px 0 0 0;
+        font-size: .9rem;
+        color: rgba(254, 252, 251, .75);
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+        .brand-subtitle {
+            display: none;
+        }
+
+        .header-actions .btn {
+            padding: 10px 12px;
+        }
+
+        .brand-title {
+            font-size: 1.15rem;
+        }
+    }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <h1 class="f-change">Popravke Obuće Sava</h1>
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="brand">
+                    <span class="brand-mark" aria-hidden="true">S</span>
+                    <div class="brand-text">
+                        <h1 class="brand-title f-change">Popravke Obuće Sava</h1>
+                    </div>
+                </div>
+                <nav class="header-actions" aria-label="Brze akcije">
+                    <a class="btn btn-primary" href="tel:+381601234567">Pozovi</a>
+                    <a class="btn" href="mailto:info@popravkeobuce.rs">Email</a>
+                </nav>
+            </div>
         </header>
     </div>
     <div class="container">
@@ -205,21 +502,26 @@
             <img src="./images/shoe5.jpg" alt="Alati za popravku obuće" />
             <div class="hero-text">
                 <h2 class="f-change">Profesionalne usluge popravke obuće u Beogradu</h2>
-                <p>Pažljivo i precizno vršimo popravku vaših omiljenih cipela. Kontaktirajte nas za procenu
-                    rada danas!</p>
-                <h3>
-                    „Sa preko 15 godina iskustva, Obućar Sava je pouzdan stručnjak za popravku cipela u
-                    Beogradu. Ponosni
-                    smo na restauraciju vaše obuće uz vrhunski majstorski rad i prijateljski pristup.“
-                </h3>
+                <p>
+                    Pažljivo i precizno vršimo popravku vaših omiljenih cipela. Kontaktirajte nas za procenu rada danas!
+                </p>
+                <p class="quote">
+                    „Sa preko 15 godina iskustva, Obućar Sava je pouzdan stručnjak za popravku cipela u Beogradu.
+                    Ponosni smo na restauraciju vaše obuće uz vrhunski majstorski rad i prijateljski pristup.“
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="tel:+381601234567">Pozovi odmah</a>
+                    <a class="btn" href="mailto:info@popravkeobuce.rs?subject=Upit%20za%20popravku%20obu%C4%87e&body=Zdravo,%0A%0AImam%20pitanje%20u%20vezi%20popravke:%0A-%20Tip%20obu%C4%87e:%0A-%20Problem:%0A-%20Rok:%0A%0AHvala!">
+                        Pošalji upit emailom
+                    </a>
+                </div>
             </div>
         </section>
     </div>
-
     <section class="about">
         <div class="container">
             <div class="text">
-                <img class="about-image" src="./images/shoe2.jpg" alt="Shoess">
+                <img class="about-image" src="./images/shoe2.jpg" alt="Obuća i popravke" />
                 <div class="services">
                     <ul>
                         <li>Zamena đona i štikli</li>
@@ -232,39 +534,43 @@
             </div>
         </div>
         <div class="container">
-            <p class="xw-100" style="width: 70%; margin-left:auto">
-                „Koristimo samo visokokvalitetne materijale i garantujemo sve popravke na 6 meseci. Vaše
-                zadovoljstvo nam
-                je na prvom mestu.“
+            <p class="xw-100">
+                „Koristimo samo visokokvalitetne materijale i garantujemo sve popravke na 6 meseci. Vaše zadovoljstvo nam je na
+                prvom mestu.“
             </p>
         </div>
         <div class="container">
             <div class="guarantee">
-                <img src="./images/shoe3.jpg" alt="Shoe">
+                <img src="./images/shoe3.jpg" alt="Popravka obuće" />
                 <div>
                     <div class="process">
-                        <h3 class="f-change">
-                            Kako funkcioniše
-                        </h3>
-                        <div>
-                            <ol>
-                                <li>Donosite obuću u našu radnju ili nas kontaktirate za detalje</li>
-                                <li>Procenićemo potrebnu popravku i dati vam ponudu</li>
-                                <li>Vi odobravate rad, a mi započinjemo</li>
-                                <li>Preuzimate svoje kao nove cipele</li>
-                            </ol>
-                        </div>
+                        <h3 class="f-change">Kako funkcioniše</h3>
+                        <ol>
+                            <li>Donosite obuću u našu radnju ili nas kontaktirate za detalje</li>
+                            <li>Procenićemo potrebnu popravku i dati vam ponudu</li>
+                            <li>Vi odobravate rad, a mi započinjemo</li>
+                            <li>Preuzimate svoje kao nove cipele</li>
+                        </ol>
                         <div class="the-process">
-                            <h3 clas="f-change">
-                                Često postavljena pitanja
-                            </h3>
-                            <ul class="FAQs">
-                                <li>Koliko traje popravka?</li>
-                                <li>Da li popravljate sve vrste obuće?</li>
-                                <li>Da li nudite uslugu preuzimanja/dostave?</li>
-                            </ul>
+                            <h3 class="f-change">Često postavljena pitanja</h3>
+                            <div class="faq">
+                                <details>
+                                    <summary>Koliko traje popravka?</summary>
+                                    <p>Najčešće 1–3 dana, u zavisnosti od vrste popravke i gužve. Hitne popravke su moguće po dogovoru.</p>
+                                </details>
+                                <details>
+                                    <summary>Da li popravljate sve vrste obuće?</summary>
+                                    <p>
+                                        Radimo većinu tipova obuće: koža, antilop, patike (određeni radovi), čizme, štikle i drugo. Donosite
+                                        ili pošaljite sliku.
+                                    </p>
+                                </details>
+                                <details>
+                                    <summary>Da li nudite uslugu preuzimanja/dostave?</summary>
+                                    <p>Po dogovoru, u zavisnosti od lokacije i obima posla.</p>
+                                </details>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -276,10 +582,7 @@
             <p>Telefon: <a href="tel:+381601234567">+381 60 123 4567</a></p>
             <p>Email: <a href="mailto:info@popravkeobuce.rs">info@popravkeobuce.rs</a></p>
         </section>
-
-        <footer>
-            &copy; 2025 Popravke Obuće Sava — Beograd, Srbija
-        </footer>
+        <footer>&copy; 2025 Popravke Obuće Sava — Beograd, Srbija</footer>
     </div>
 </body>
 

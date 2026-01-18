@@ -23,13 +23,121 @@
 	src: url('./fonts/Lato-Regular.ttf') format('truetype');
 }
 
-.main-menu {
-	display: none;
+/* ==== tweak these to match your header ==== */
+:root{
+  --header-bg: #0b0b0b;      /* same as your header */
+  --text: #ffffff;
+  --panel-w: 260px;          /* width of the mobile menu rectangle */
+  --pad: 20px;
 }
 
-.mobile-menu {
-	display: block;
+.site-nav{
+  /*background: var(--header-bg);*/
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--pad);
+  position: relative;
+  z-index: 10;
 }
+
+.site-nav a{ color: var(--text); text-decoration: none; }
+
+.logo{
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Desktop menu */
+.main-menu{
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu li a{
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.main-menu li a:hover{ opacity: 1; }
+
+/* Hamburger button */
+.mobile-menu-btn{
+  display: none;            /* shown on mobile only */
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.site-nav{
+  position: relative;
+  z-index: 50;
+}
+
+/* mobile menu panel */
+.main-menu{
+  z-index: 1000;
+}
+
+/* hamburger button must stay above menu */
+.mobile-menu-btn{
+  position: relative;
+  z-index: 1100;
+}
+
+
+/* ===== Mobile layout ===== */
+@media (max-width: 900px){
+  /* Hide the horizontal menu */
+  .main-menu{
+    /* become a right-side panel */
+    display: block;
+    position: fixed;
+    top: 0;                 /* start at top of screen */
+    right: 0;               /* pinned to right edge */
+    width: var(--panel-w);
+    height: 100vh;
+    background: #000;
+    padding: 80px 18px 18px; /* space for header area */
+    transform: translateX(100%); /* hidden off-screen */
+    transition: transform 220ms ease;
+    box-shadow: -10px 0 30px rgba(0,0,0,.35);
+  }
+
+  /* show it when open */
+  .main-menu.is-open{
+    transform: translateX(0);
+  }
+
+  .main-menu li{
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .main-menu li a{
+    display: block;
+    padding: 14px 6px;
+  }
+
+  /* show the hamburger */
+  .mobile-menu-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
 
 .m1-img {
 	display: none;
@@ -166,7 +274,7 @@ main div.bck-img-wrapper {
 main div.bck-img--hero {
 	background-image: url("./images/background-image-1-sally-doherty.png");
 	background-size: cover;
-	background-position: center;
+	background-position: top left;
 	padding: 0px 30px 0px 30px;
 }
 

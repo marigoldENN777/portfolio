@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,8 @@
 <body>
     <header>
         <div class="logotype">SALLY DOHERTY</div>
-        <nav>
-            <ul class="main-menu">
+        <nav class="site-nav">
+            <ul class="main-menu" id="mainMenu">
                 <li><a href="#">BIOGRAPHY</a></li>
                 <li><a href="#">SINGING LESSONS</a></li>
                 <li><a href="#">EVENTS</a></li>
@@ -21,7 +22,9 @@
                 <li><a href="#">GALLERY</a></li>
                 <li><a href="#">CONTACT</a></li>
             </ul>
-            <i class="fa-solid fa-bars mobile-menu"></i>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
     </header>
     <main class="m1">
@@ -157,6 +160,29 @@
     );
 
     images.forEach(img => observer.observe(img));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mainMenu = document.getElementById('mainMenu');
+
+    function setOpen(open) {
+        mainMenu.classList.toggle('is-open', open);
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    menuBtn.addEventListener('click', () => {
+        const isOpen = mainMenu.classList.contains('is-open');
+        setOpen(!isOpen);
+    });
+
+    // Close when a menu link is clicked (mobile)
+    mainMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') setOpen(false);
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+    });
     </script>
 </body>
 
