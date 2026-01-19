@@ -1,79 +1,13 @@
 import os
 import smtplib
-from flask import Flask, render_template, request, redirect, flash
+from smtplib import SMTPAuthenticationError, SMTPException
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from flask import Flask, render_template, request, redirect, flash
+
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
-
-
-def build_email_html(name: str, product: str) -> str:
-    return f"""\
-<!doctype html>
-<html lang="en">
-  <body style="margin:0;padding:0;background:#f6f6f6;">
-    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f6f6f6;">
-      <tr>
-        <td align="center" style="padding:32px 16px;">
-          <table width="600" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;width:100%;">
-            
-            <tr>
-              <td style="text-align:center;padding-bottom:14px;">
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#777;">
-                  Neven’s Art Studio
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td style="background:#ffffff;border:1px solid #e7e7e7;border-radius:16px;padding:28px 24px;text-align:center;">
-                
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#111;">
-                  Thank you for your order
-                </div>
-
-                <div style="margin-top:16px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
-                  Hi {name},
-                </div>
-
-                <div style="margin-top:10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
-                  We received your order for:
-                </div>
-
-                <div style="margin-top:6px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#111;">
-                  {product}
-                </div>
-
-                <div style="margin-top:22px;">
-                  <a href="https://neven-portfolio.com"
-                     style="display:inline-block;padding:10px 18px;
-                            font-family:Arial,Helvetica,sans-serif;
-                            font-size:14px;font-weight:600;
-                            color:#ffffff;background:#111;
-                            border-radius:8px;text-decoration:none;">
-                    View details
-                  </a>
-                </div>
-
-              </td>
-            </tr>
-
-            <tr>
-              <td style="text-align:center;padding-top:14px;">
-                <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#777;">
-                  © Neven’s Art Studio
-                </div>
-              </td>
-            </tr>
-
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
-</html>
-"""
 
 
 @app.route("/")
@@ -87,13 +21,13 @@ def send():
     email = request.form["email"]
     product = request.form["product"]
 
-    smtp_user = os.environ.get("SMTP_USER")
-    smtp_pass = os.environ.get("SMTP_PASS")
+    sender_email = os.getenv("SMTP_USER")
+    password = os.getenv("SMTP_PASS")
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Thank you for your order, {name}"
-    msg["From"] = smtp_user
-    msg["To"] = email
+    message = MIMEMultipart("alternative")
+    message["Subject"] = f"Thank you, {name}!"
+    message["From"] = sender_email or ""
+    message["To"] = email
 
     text = f"""Hi {name},
 
@@ -105,18 +39,78 @@ Product:
 – Neven’s Art Studio
 """
 
-    html = build_email_html(name, product)
+    html = f"""\
+<!doctype html>
+<html lang="en">
+  <body style="margin:0;padding:0;background:#f6f6f6;">
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f6f6f6;">
+      <tr>
+        <td align="center" style="padding:32px 16px;">
+          <table width="600" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;width:100%;">
+            <tr>
+              <td style="text-align:center;padding-bottom:14px;">
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#777;">
+                  Neven’s Studio
+                </div>
+              </td>
+            </tr>
 
-    msg.attach(MIMEText(text, "plain"))
-    msg.attach(MIMEText(html, "html"))
+            <tr>
+              <td style="background:#ffffff;border:1px solid #e7e7e7;border-radius:16px;padding:28px 24px;text-align:center;">
+                <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#111;">
+                  Thank you for your order
+                </div>
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(smtp_user, smtp_pass)
-        server.send_message(msg)
+                <div style="margin-top:16px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
+                  Hi {name},
+                </div>
 
-    flash("Order confirmation email sent successfully.", "success")
+                <div style="margin-top:10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
+                  We received your order for:
+                </div>
+
+                <div style="margin-top:10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#111;">
+                  {product}
+                </div>
+
+                <div style="margin-top:22px;">
+                  <a href="https://neven-portfolio.com"
+                     style="display:inline-block;padding:10px 18px;
+                            font-family:Arial,Helvetica,sans-serif;
+                            font-size:14px;font-weight:600;
+                            color:#ffffff;background:#111;
+                            border-radius:8px;text-decoration:none;">
+                    View details
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+"""
+
+    message.attach(MIMEText(text, "plain", "utf-8"))
+    message.attach(MIMEText(html, "html", "utf-8"))
+
+    try:
+        if not sender_email or not password:
+            raise RuntimeError("Missing SMTP credentials. Set SMTP_USER and SMTP_PASS on the server.")
+
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=20) as server:
+            server.login(sender_email, password)
+            server.send_message(message)
+
+        flash(f"Email sent to {email} for {product}!", "success")
+
+    except SMTPAuthenticationError:
+        flash("SMTP login failed. Verify SMTP_USER/SMTP_PASS (Gmail App Password).", "error")
+    except SMTPException as e:
+        flash(f"SMTP error while sending: {e}", "error")
+    except Exception as e:
+        flash(f"Error: {e}", "error")
+
     return redirect("/email_sender/")
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
