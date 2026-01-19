@@ -1,0 +1,21 @@
+# Node / Tailwind
+node_modules/
+npm-debug.log*
+package-lock.json
+
+
+# Tailwind build cache (optional)
+.tailwindcss/
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+.env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
