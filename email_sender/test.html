@@ -1,15 +1,3 @@
-import os
-import smtplib
-from flask import Flask, render_template, request, redirect, flash
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
-app = Flask(__name__)
-app.secret_key = "super-secret-key"
-
-
-def build_email_html(name: str, product: str) -> str:
-    return f"""\
 <!doctype html>
 <html lang="en">
   <body style="margin:0;padding:0;background:#f6f6f6;">
@@ -18,6 +6,7 @@ def build_email_html(name: str, product: str) -> str:
         <td align="center" style="padding:32px 16px;">
           <table width="600" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;width:100%;">
             
+            <!-- Header -->
             <tr>
               <td style="text-align:center;padding-bottom:14px;">
                 <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#777;">
@@ -26,6 +15,7 @@ def build_email_html(name: str, product: str) -> str:
               </td>
             </tr>
 
+            <!-- Card -->
             <tr>
               <td style="background:#ffffff;border:1px solid #e7e7e7;border-radius:16px;padding:28px 24px;text-align:center;">
                 
@@ -34,7 +24,7 @@ def build_email_html(name: str, product: str) -> str:
                 </div>
 
                 <div style="margin-top:16px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
-                  Hi {name},
+                  Hi Neven,
                 </div>
 
                 <div style="margin-top:10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;">
@@ -42,9 +32,10 @@ def build_email_html(name: str, product: str) -> str:
                 </div>
 
                 <div style="margin-top:6px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#111;">
-                  {product}
+                  Ocean Painting
                 </div>
 
+                <!-- Button -->
                 <div style="margin-top:22px;">
                   <a href="https://neven-portfolio.com"
                      style="display:inline-block;padding:10px 18px;
@@ -59,6 +50,7 @@ def build_email_html(name: str, product: str) -> str:
               </td>
             </tr>
 
+            <!-- Footer -->
             <tr>
               <td style="text-align:center;padding-top:14px;">
                 <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#777;">
@@ -73,50 +65,3 @@ def build_email_html(name: str, product: str) -> str:
     </table>
   </body>
 </html>
-"""
-
-
-@app.route("/")
-def form():
-    return render_template("order_form.html")
-
-
-@app.route("/send", methods=["POST"])
-def send():
-    name = request.form["name"]
-    email = request.form["email"]
-    product = request.form["product"]
-
-    smtp_user = os.environ.get("SMTP_USER")
-    smtp_pass = os.environ.get("SMTP_PASS")
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Thank you for your order, {name}"
-    msg["From"] = smtp_user
-    msg["To"] = email
-
-    text = f"""Hi {name},
-
-Thank you for your order.
-
-Product:
-{product}
-
-– Neven’s Art Studio
-"""
-
-    html = build_email_html(name, product)
-
-    msg.attach(MIMEText(text, "plain"))
-    msg.attach(MIMEText(html, "html"))
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(smtp_user, smtp_pass)
-        server.send_message(msg)
-
-    flash("Order confirmation email sent successfully.", "success")
-    return redirect("/email_sender/")
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
