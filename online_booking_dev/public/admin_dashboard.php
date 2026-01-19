@@ -26,7 +26,8 @@ if ($result && $result->num_rows > 0) {
 
   <!-- Tailwind -->
   <link rel="stylesheet" href="/assets/css/tailwind.css?v=1">
-  <link rel="stylesheet" href="/online_booking/assets/css/tailwind.css?v=1">
+    <link rel="stylesheet" href="/online_booking_dev/public/assets/css/tailwind.css?v=1">
+
 </head>
 
 <body class="min-h-screen bg-white text-gray-900">
