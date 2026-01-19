@@ -1,0 +1,8 @@
+# Node / Tailwind
+node_modules/
+npm-debug.log*
+package-lock.json
+
+
+# Tailwind build cache (optional)
+.tailwindcss/

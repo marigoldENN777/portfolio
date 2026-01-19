@@ -1,66 +1,162 @@
-<?php include("../config/db.php"); ?>
+<?php
+include("../config/db.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Online Booking System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <!--  <link rel="stylesheet" href="/../../assets/css/style.css">-->
-    <link rel="stylesheet" href="assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (compiled) -->
+  <link rel="stylesheet" href="/assets/css/tailwind.css?v=1">
 </head>
-<body>
-<?php session_start(); ?>
-<?php if(isset($_SESSION["admin_logged_in"])) : ?>
-    <a href="admin_dashboard" style="display: inline-block; padding: 20px; text-decoration: none; font-size: 18px">Admin Dashboard</a>
-<?php endif; ?>
-<div class="form-wrapper" style="margin-bottom: 100px">
-  <h1>Book an Appointment</h1>
-    <h5 style="color: #fff">Visit <a style="font-size: 16px; color: #fff; font-style: italic;" href="admin_login.php">admin login</a> to view appointments</h5>
 
-  <form action="controllers/HandleBooking.php" method="POST">
-      <div class="form-items">
-        <label>Name:</label>
-        <input type="text" name="name" required">
+<body class="min-h-screen bg-white text-gray-900">
+  <div class="mx-auto flex min-h-screen max-w-3xl items-center justify-center p-6">
+    <div class="w-full">
+      <!-- Top bar -->
+      <div class="mb-6 flex items-center justify-between">
+        <div class="text-sm text-gray-600">
+          <?php if(isset($_SESSION["admin_logged_in"])) : ?>
+            <a
+              href="admin_dashboard"
+              class="inline-flex items-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50"
+            >
+              Admin Dashboard
+            </a>
+          <?php endif; ?>
+        </div>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+        <a
+          href="admin_login.php"
+          class="text-sm font-medium text-gray-700 underline underline-offset-4 hover:text-gray-900"
+        >
+          Admin login
+        </a>
+      </div>
 
+      <!-- Card -->
+      <div class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div class="mb-8">
+          <h1 class="text-2xl font-semibold tracking-tight" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+            Book an Appointment
+          </h1>
+          <p class="mt-2 text-sm text-gray-600" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+            Fill out the form below to book your appointment.
+          </p>
+        </div>
 
+        <?php if (isset($_GET['success'])) : ?>
+          <div
+            id="successMsg"
+            class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800"
+          >
+            Form submitted successfully!
+          </div>
+        <?php endif; ?>
 
-        <label>Date:</label>
-        <input type="date" name="date" required>
+        <form action="controllers/HandleBooking.php" method="POST" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Your name"
+              class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                     focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+            >
+          </div>
 
-        <label>Time:</label>
-        <input type="time" name="time" required >
-          <label>Phone:</label>
-          <input type="text" name="phone" required >
-          <label>Service:</label>
-          <select name="service" required style="margin-bottom: 20px">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                     focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+            >
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Date</label>
+              <input
+                type="date"
+                name="date"
+                required
+                class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                       focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+              >
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Time</label>
+              <input
+                type="time"
+                name="time"
+                required
+                class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                       focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+              >
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Phone</label>
+            <input
+              type="text"
+              name="phone"
+              required
+              placeholder="+381..."
+              class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                     focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+            >
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Service</label>
+            <select
+              name="service"
+              required
+              class="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900
+                     focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+            >
               <option value="Singing Lesson">Singing Lesson</option>
               <option value="Shoe Repair">Shoe Repair</option>
-          </select>
+            </select>
+          </div>
 
-        <button type="submit">BOOK NOW</button>
-          <?php
-          // Show success if the URL contains ?success=1
-              if (isset($_GET['success'])) {
-                  echo "<p id='successMsg' style='color: #fff; font-size: 20px'>Form submitted successfully!</p>";
-              }
-          ?>
+          <button
+            type="submit"
+            class="inline-flex w-full items-center justify-center rounded-lg bg-gray-900 px-4 py-2.5
+                   text-sm font-semibold text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+          >
+            BOOK NOW
+          </button>
+        </form>
       </div>
-  </form>
 
-</div>
-<script>
-    setInterval(() => {
-        const msg = document.getElementById('successMsg');
-        if(msg) {
-            msg.style.display = 'none';
-        }
-    }, 3000)
+      <div class="mt-10 text-center text-xs text-gray-500">
+        © <?php echo date("Y"); ?> Online Booking System
+      </div>
+    </div>
+  </div>
 
-</script>
+  <script>
+    // Hide success message after 3 seconds
+    window.addEventListener("DOMContentLoaded", () => {
+      const msg = document.getElementById("successMsg");
+      if (!msg) return;
+      setTimeout(() => { msg.style.display = "none"; }, 3000);
+    });
+  </script>
 </body>
 </html>
