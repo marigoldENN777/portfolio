@@ -3,6 +3,9 @@
 .visible {
   visibility: visible;
 }
+.absolute {
+  position: absolute;
+}
 .static {
   position: static;
 }
@@ -48,11 +51,20 @@
 .h-\[100px\] {
   height: 100px;
 }
+.h-auto {
+  height: auto;
+}
+.max-h-\[300px\] {
+  max-height: 300px;
+}
 .min-h-screen {
   min-height: 100vh;
 }
 .w-full {
   width: 100%;
+}
+.max-w-\[500px\] {
+  max-width: 500px;
 }
 .max-w-\[1200px\] {
   max-width: 1200px;
@@ -73,6 +85,9 @@
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.resize {
+  resize: both;
 }
 .resize-y {
   resize: vertical;
@@ -127,6 +142,9 @@
 .bg-gradient-to-br {
   --tw-gradient-position: to bottom right in oklab;
   background-image: linear-gradient(var(--tw-gradient-stops));
+}
+.object-cover {
+  object-fit: cover;
 }
 .text-center {
   text-align: center;

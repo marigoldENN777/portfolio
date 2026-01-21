@@ -19,12 +19,8 @@
 </head>
 
 <body>
-    <div class="bg-red-500 text-white p-6 rounded-2xl shadow-xl">
-  Tailwind test
-</div>
-<div class="bg-red-500 text-white p-4">TAILWIND TEST</div>
 
-    <div class="container">
+    <div class="container mx-auto">
         <!-- NAVIGATION + LOGOTYPE (mobile-first) -->
         <header class="sticky top-0 z-50 mx-auto w-full max-w-[1200px] px-4 pt-5 ">
             <nav class="flex items-center justify-between gap-3
@@ -42,7 +38,8 @@
                     <span class="font-medium opacity-90">VISION</span>
                 </a>
                 <!-- NAV LINKS (mobile-first: compact) -->
-                <ul class="hidden md:flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700 ">
+                <!-- Desktop menu -->
+                <ul class="hidden md:flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
                     <li>
                         <a href="#bzr" data-link class="rounded-lg px-2 py-1 hover:text-blue-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 data-[active=true]:text-blue-600">
                             Usluge
@@ -59,7 +56,26 @@
                         </a>
                     </li>
                 </ul>
-                <i class="fa-solid fa-bars block md:hidden"></i>
+                <!-- Hamburger Icon for Mobile -->
+                <i id="menu-btn" class="fa-solid fa-bars block md:hidden cursor-pointer text-xl"></i>
+                <!-- Mobile Menu -->
+                <ul id="mobile-menu" class="hidden flex-col gap-4 text-sm font-semibold text-slate-700 bg-white p-4 absolute top-12 right-4 shadow-lg rounded-md md:hidden">
+                    <li>
+                        <a href="#bzr" data-link class="block px-2 py-1 hover:text-blue-600 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40">
+                            Usluge
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about-us" data-link class="block px-2 py-1 hover:text-blue-600 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40">
+                            O nama
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" data-link class="block px-2 py-1 hover:text-blue-600 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40">
+                            Kontakt
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </header>
         <div id="home" data-scroll class="h-[1px]"></div>
@@ -171,14 +187,14 @@
                 <!-- IMAGE (animate in, slightly delayed) -->
                 <div class="hero my-12 w-full lg:w-1/2 order-2 md:order-2
                opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up">
-                    <img class="w-full rounded-2xl shadow-md" src="../assets/images/bezbednost-i-zastita-na-radu-section-image.jpg" alt="Safety at Work" />
+                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/bezbednost-i-zastita-na-radu-section-image.jpg" alt="Safety at Work" />
                 </div>
             </div>
         </section>
         <section class="px-4">
             <div class="flex flex-col md:flex-row align-center gap-6">
                 <div class="hero w-full lg:w-1/2  order-2  md:order-1 my-12 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img src="../assets/images/bezbednost-i-zastita-na-radu-section1.jpg" alt="Bezbednost i zastita na radu">
+                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/bezbednost-i-zastita-na-radu-section1.jpg" alt="Bezbednost i zastita na radu">
                 </div>
                 <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 order-1 md:order-2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
                     <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Bezbednost i zdravlje na radu</h3>
@@ -199,7 +215,7 @@
                     </ul>
                 </div>
                 <div class="hero my-12 w-full lg:w-1/2 order-2 md:order-1 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img src="../assets/images/fire-exit-bezbednost-i-zastita-na-radu.jpg" alt="Zastita od pozara">
+                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/fire-exit-bezbednost-i-zastita-na-radu.jpg" alt="Zastita od pozara">
                 </div>
             </div>
             <div id="zzs"></div>
@@ -216,7 +232,7 @@
                     </ul>
                 </div>
                 <div class="hero md:order-1 order-2 my-12 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img src="../assets/images/zastita-zivotne-sredine-bezbednost-i-zastita-na-radu.jpg" alt="Bezbednost I Zastita na Radu, zastita zivotne sredine">
+                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/zastita-zivotne-sredine-bezbednost-i-zastita-na-radu.jpg" alt="Bezbednost I Zastita na Radu, zastita zivotne sredine">
                 </div>
             </div>
             <div id="iso"></div>
@@ -232,7 +248,7 @@
                     </ul>
                 </div>
                 <div class="hero my-12 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img src="../assets/images/iso-standardi-bezbednost-i-zastita-na-radu.jpg" alt="Zastita i bezbednost na radu ISO standardi">
+                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/iso-standardi-bezbednost-i-zastita-na-radu.jpg" alt="Zastita i bezbednost na radu ISO standardi">
                 </div>
             </div>
         </section>
@@ -388,14 +404,11 @@ duration-300
     </div>
     <script>
     // on click show text
-    document.querySelectorAll(".box").forEach(box => {
-        const title = box.querySelector(".box-title");
-        const content = box.querySelector(".hidden");
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        title.addEventListener("click", () => {
-            content.classList.toggle("show");
-            title.classList.toggle("active");
-        });
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
     });
     </script>
     <script src="../assets/main.js"></script>
