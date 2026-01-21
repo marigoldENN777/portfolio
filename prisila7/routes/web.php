@@ -48,24 +48,24 @@ Route::post('/schema/add-columns', [SchemaController::class, 'addColumns'])->nam
 */
 
 // List tables (your /tables old route)
-Route::get('/tables', [DataController::class, 'listTables'])->name('tables.index');
+// Route::get('/tables', [DataController::class, 'listTables'])->name('tables.index');
 
 // Show table data
-Route::get('/table_data/{table}', [DataController::class, 'showTableData'])->name('table.data');
+// Route::get('/table_data/{table}', [DataController::class, 'showTableData'])->name('table.data');
 
 // Add row UI + submit
-Route::get('/table_add/{table}', [DataController::class, 'createRow'])->name('table.row.create');
-Route::post('/table_add/{table}', [DataController::class, 'storeRow'])->name('table.row.store');
+// Route::get('/table_add/{table}', [DataController::class, 'createRow'])->name('table.row.create');
+// Route::post('/table_add/{table}', [DataController::class, 'storeRow'])->name('table.row.store');
 
 // Edit row UI + submit
-Route::get('/table_edit/{table}/{id}', [DataController::class, 'editRow'])->name('table.row.edit');
-Route::post('/table_edit/{table}/{id}', [DataController::class, 'updateRow'])->name('table.row.update');
+// Route::get('/table_edit/{table}/{id}', [DataController::class, 'editRow'])->name('table.row.edit');
+// Route::post('/table_edit/{table}/{id}', [DataController::class, 'updateRow'])->name('table.row.update');
 
 // Delete single row
-Route::get('/table_delete/{table}/{id}', [DataController::class, 'deleteRow'])->name('table.row.delete');
+// Route::get('/table_delete/{table}/{id}', [DataController::class, 'deleteRow'])->name('table.row.delete');
 
 // Bulk delete rows
-Route::post('/table_delete_bulk/{table}', [DataController::class, 'bulkDelete'])->name('table.row.bulkDelete');
+// Route::post('/table_delete_bulk/{table}', [DataController::class, 'bulkDelete'])->name('table.row.bulkDelete');
 
 
 /*
@@ -73,8 +73,8 @@ Route::post('/table_delete_bulk/{table}', [DataController::class, 'bulkDelete'])
 | Table Filter (Enable / Disable tables on frontend)
 |--------------------------------------------------------------------------
 */
-Route::get('/tables/filter', [DataController::class, 'showTableFilterForm'])->name('tables.filter');
-Route::post('/tables/filter', [DataController::class, 'updateTableFilter'])->name('tables.filter.update');
+// Route::get('/tables/filter', [DataController::class, 'showTableFilterForm'])->name('tables.filter');
+// Route::post('/tables/filter', [DataController::class, 'updateTableFilter'])->name('tables.filter.update');
 
 
 /*
@@ -82,8 +82,8 @@ Route::post('/tables/filter', [DataController::class, 'updateTableFilter'])->nam
 | CSV Import
 |--------------------------------------------------------------------------
 */
-Route::get('/table_import/{table}', [SchemaController::class, 'showImportForm'])->name('table.import.form');
-Route::post('/table_import/{table}', [SchemaController::class, 'handleImportCsv'])->name('table.import.handle');
+// Route::get('/table_import/{table}', [SchemaController::class, 'showImportForm'])->name('table.import.form');
+// Route::post('/table_import/{table}', [SchemaController::class, 'handleImportCsv'])->name('table.import.handle');
 
 
 /*
@@ -91,4 +91,4 @@ Route::post('/table_import/{table}', [SchemaController::class, 'handleImportCsv'
 | Storefront (optional)
 |--------------------------------------------------------------------------
 */
-Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+// Route::get('/store', [StoreController::class, 'index'])->name('store.index');
