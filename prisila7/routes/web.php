@@ -10,36 +10,36 @@ use App\Http\Controllers\StoreController;
 | Schema (Tables + Columns)
 |--------------------------------------------------------------------------
 */
-
+Route::group(['prefix' => 'prisila7'], function () {
 // List tables (your list_tables.php equivalent)
-Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
-Route::post('/schema', [SchemaController::class, 'storeTable'])->name('schema.store');
+    Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
+    Route::post('/schema', [SchemaController::class, 'storeTable'])->name('schema.store');
 
-// Add table UI + submit
-Route::get('/schema/add', [SchemaController::class, 'create'])->name('schema.create');
-Route::post('/schema/create', [SchemaController::class, 'store'])->name('schema.store');
+    // Add table UI + submit
+    Route::get('/schema/add', [SchemaController::class, 'create'])->name('schema.create');
+    Route::post('/schema/create', [SchemaController::class, 'store'])->name('schema.store');
 
-// Edit table structure (columns)
-// no functionality yet
-Route::get('/schema/{table}/edit', [SchemaController::class, 'editTable'])->name('schema.edit.table');
-// Add data (rows)
-Route::get('/schema/{table}/data/add', [SchemaController::class, 'addTableData'])->name('schema.data.add');
-Route::post('/schema/{table}/data/add', [SchemaController::class, 'storeTableData'])->name('schema.data.store');
-
-
-
-// Drop table
-Route::post('/schema/drop', [SchemaController::class, 'drop'])->name('schema.drop');
-
-// Remove / add columns
-Route::post('/schema/remove-column', [SchemaController::class, 'removeColumn'])->name('schema.removeColumn');
-Route::get(
-    '/schema/{table}/columns/add',
-    [SchemaController::class, 'showAddColumns']
-)->name('schema.table.columns.add');
-Route::post('/schema/add-columns', [SchemaController::class, 'addColumns'])->name('schema.addColumns');
+    // Edit table structure (columns)
+    // no functionality yet
+    Route::get('/schema/{table}/edit', [SchemaController::class, 'editTable'])->name('schema.edit.table');
+    // Add data (rows)
+    Route::get('/schema/{table}/data/add', [SchemaController::class, 'addTableData'])->name('schema.data.add');
+    Route::post('/schema/{table}/data/add', [SchemaController::class, 'storeTableData'])->name('schema.data.store');
 
 
+
+    // Drop table
+    Route::post('/schema/drop', [SchemaController::class, 'drop'])->name('schema.drop');
+
+    // Remove / add columns
+    Route::post('/schema/remove-column', [SchemaController::class, 'removeColumn'])->name('schema.removeColumn');
+    Route::get(
+        '/schema/{table}/columns/add',
+        [SchemaController::class, 'showAddColumns']
+    )->name('schema.table.columns.add');
+    Route::post('/schema/add-columns', [SchemaController::class, 'addColumns'])->name('schema.addColumns');
+
+});
 
 /*
 |--------------------------------------------------------------------------
