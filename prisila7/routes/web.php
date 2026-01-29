@@ -12,6 +12,8 @@ use App\Http\Controllers\StoreController;
 */
 Route::group([], function () {
 // List tables (your list_tables.php equivalent)
+    Route::get('/', fn() => redirect('/schema'));
+
     Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
     Route::post('/schema', [SchemaController::class, 'storeTable'])->name('schema.store');
 
