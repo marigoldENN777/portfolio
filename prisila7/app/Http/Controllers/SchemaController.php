@@ -134,6 +134,32 @@ class SchemaController extends Controller
 
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'table_name'  => ['required', 'string', 'regex:/^[a-z][a-z0-9_]*$/'],
+            'primary_key' => ['nullable', 'string'],
+        ]);
+
+        $tableName  = Str::snake($request->table_name);
+        $primaryKey = $request->primary_key ?: 'id';
+
+        if (Schema::hasTable($tableName)) {
+            return back()
+                ->withErrors(['table_name' => 'Table already exists.'])
+                ->withInput();
+        }
+
+        Schema::create($tableName, function (Blueprint $table) use ($primaryKey) {
+            $table->bigIncrements($primaryKey);
+            $table->timestamps();
+        });
+
+        return redirect()
+            ->route('schema.index')
+            ->with('success', "Table '{$tableName}' created successfully.");
+    }
+
 
 public function editTable(string $table)
 {
