@@ -10,7 +10,7 @@ use App\Http\Controllers\StoreController;
 | Schema (Tables + Columns)
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'prisila7'], function () {
+Route::group([], function () {
 // List tables (your list_tables.php equivalent)
     Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
     Route::post('/schema', [SchemaController::class, 'storeTable'])->name('schema.store');
