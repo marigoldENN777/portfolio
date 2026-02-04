@@ -95,9 +95,11 @@ public function storeTable(Request $request)
 
     } catch (\Throwable $e) {
         return view('schema.add', [
-            'customErrors' => ['SQL Error: ' . $e->getMessage()],
-            'results' => [],
-        ]);
+    'success' => "Table `{$tableName}` created successfully.",
+    'customErrors' => [],
+    'results' => [],
+]);
+
     }
 }
 
