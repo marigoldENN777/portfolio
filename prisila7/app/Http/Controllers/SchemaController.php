@@ -33,48 +33,38 @@ class SchemaController extends Controller
         return view('schema.add');
     }
 
+
 public function storeTable(Request $request)
 {
     $pattern = '/^[a-z0-9_]+$/';
 
-    $tableName = trim((string) $request->input('table_name', ''));
+    $tableName  = trim((string) $request->input('table_name', ''));
     $primaryKey = trim((string) $request->input('primary_key', 'id')); // optional
 
-    // If you don't actually support custom PK yet, just ignore $primaryKey
-    // (or validate it and use it later)
+    $errors = [];
 
-    $customErrors = [];
-    $results = [];
-
+    // Validate table name
     if ($tableName === '' || !preg_match($pattern, $tableName)) {
-        $customErrors[] = "Table name '{$tableName}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
+        $errors[] = "Table name '{$tableName}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
     }
 
+    // Validate primary key (optional)
     if ($primaryKey !== '' && !preg_match($pattern, $primaryKey)) {
-        $customErrors[] = "Primary key '{$primaryKey}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
+        $errors[] = "Primary key '{$primaryKey}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
     }
 
-    if (!empty($customErrors)) {
-        return view('schema.add', [
-            'customErrors' => $customErrors,
-            'results' => [],
-        ]);
+    if (!empty($errors)) {
+        return back()->with('customErrors', $errors)->withInput();
+    }
+
+    // Check if exists
+    if (Schema::hasTable($tableName)) {
+        return back()->with('success', "Table `{$tableName}` already exists.")->withInput();
     }
 
     try {
-        if (Schema::hasTable($tableName)) {
-            return view('schema.add', [
-                'customErrors' => [],
-                'results' => [[
-                    'table' => $tableName,
-                    'fields' => [],
-                    'result' => ['message' => "Table `{$tableName}` already exists."],
-                ]],
-            ]);
-        }
-
         Schema::create($tableName, function (Blueprint $table) use ($primaryKey) {
-            // Default Laravel style:
+            // Default Laravel style primary key
             if ($primaryKey === '' || $primaryKey === 'id') {
                 $table->bigIncrements('id');
             } else {
@@ -84,24 +74,15 @@ public function storeTable(Request $request)
             $table->timestamps(); // created_at + updated_at
         });
 
-        return view('schema.add', [
-            'customErrors' => [],
-            'results' => [[
-                'table' => $tableName,
-                'fields' => [],
-                'result' => ['message' => "✅ Table `{$tableName}` created."],
-            ]],
-        ]);
-
     } catch (\Throwable $e) {
-        return view('schema.add', [
-    'success' => "Table `{$tableName}` created successfully.",
-    'customErrors' => [],
-    'results' => [],
-]);
-
+        return back()
+            ->with('customErrors', ['SQL Error: ' . $e->getMessage()])
+            ->withInput();
     }
+
+    return back()->with('success', "✅ Table `{$tableName}` created successfully.");
 }
+
 
 
     public function store(Request $request)
