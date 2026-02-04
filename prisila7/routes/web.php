@@ -14,7 +14,6 @@ Route::group([], function () {
 // List tables (your list_tables.php equivalent)
     Route::get('/', fn() => redirect('schema'));
 
-    Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
     Route::post('/schema', [SchemaController::class, 'storeTable'])->name('schema.store');
 
     // Add table UI + submit
@@ -32,7 +31,11 @@ Route::group([], function () {
 
     // Drop table
     Route::post('/schema/drop', [SchemaController::class, 'drop'])->name('schema.drop');
-    Route::delete('/schema/{table}', [SchemaController::class, 'dropTable'])->name('schema.drop');
+    Route::delete('/schema/{table}', [SchemaController::class, 'dropTable'])
+    ->where('table', '[a-z0-9_]+')
+    ->name('schema.drop');
+
+    Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
 
 
     // Remove / add columns
