@@ -33,10 +33,6 @@ class SchemaController extends Controller
         return view('schema.add');
     }
 
-    use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-
 public function storeTable(Request $request)
 {
     $pattern = '/^[a-z0-9_]+$/';
