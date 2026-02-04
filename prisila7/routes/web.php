@@ -32,6 +32,8 @@ Route::group([], function () {
 
     // Drop table
     Route::post('/schema/drop', [SchemaController::class, 'drop'])->name('schema.drop');
+    Route::delete('/schema/{table}', [SchemaController::class, 'dropTable'])->name('schema.drop');
+
 
     // Remove / add columns
     Route::post('/schema/remove-column', [SchemaController::class, 'removeColumn'])->name('schema.removeColumn');

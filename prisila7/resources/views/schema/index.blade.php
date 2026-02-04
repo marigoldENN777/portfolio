@@ -31,6 +31,24 @@
                 </div>
 
                 <div class="p-6">
+                    @if (session('success'))
+  <div id="flash-message"
+       class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 transition-opacity duration-500">
+    {{ session('success') }}
+  </div>
+@endif
+
+@if (session('customErrors'))
+  <div class="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+    <div class="font-semibold mb-1">Please fix the following:</div>
+    <ul class="list-disc pl-5 space-y-1">
+      @foreach (session('customErrors') as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
                     @if (empty($tables))
                         <p class="text-sm text-slate-700">
                             You don't have any tables yet. Create your first one to start managing data.
@@ -57,11 +75,27 @@
       </td>
 
       <td class="px-4 py-3 text-sm text-right">
-        <a href="{{ route('schema.edit.table', ['table' => $table]) }}"
-           class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">
-          Edit
-        </a>
-      </td>
+  <div class="inline-flex items-center gap-2">
+    <a href="{{ route('schema.edit.table', ['table' => $table]) }}"
+       class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">
+      Edit
+    </a>
+
+    <form method="POST" action="{{ route('schema.drop', ['table' => $table]) }}"
+          onsubmit="return confirm('Drop table {{ $table }}? This cannot be undone.');"
+          class="inline">
+      @csrf
+      @method('DELETE')
+
+      <button type="submit"
+              class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-sm font-semibold text-red-700 hover:bg-red-100">
+        Drop
+      </button>
+    </form>
+  </div>
+</td>
+
+      
     </tr>
   @endforeach
 </tbody>

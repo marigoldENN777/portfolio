@@ -131,6 +131,29 @@ public function editTable(string $table)
     return view('schema.edit_table', compact('table', 'columns', 'rows'));
 }
 
+public function dropTable(string $table)
+{
+    $pattern = '/^[a-z0-9_]+$/';
+
+    $table = trim($table);
+
+    if ($table === '' || !preg_match($pattern, $table)) {
+        return back()->with('customErrors', ["Invalid table name '{$table}'."])->withInput();
+    }
+
+    if (!Schema::hasTable($table)) {
+        return back()->with('customErrors', ["Table '{$table}' does not exist."])->withInput();
+    }
+
+    try {
+        Schema::dropIfExists($table);
+    } catch (\Throwable $e) {
+        return back()->with('customErrors', ['SQL Error: ' . $e->getMessage()])->withInput();
+    }
+
+    return back()->with('success', "🗑️ Table `{$table}` dropped successfully.");
+}
+
 
 public function addTableData(string $table)
 {
