@@ -33,106 +33,78 @@ class SchemaController extends Controller
         return view('schema.add');
     }
 
-    public function storeTable(Request $request)
-    {
-        $tables = $request->input('table', []);
-        $fieldsGrouped = $request->input('fields', []);
+    use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
-        $errors = [];
-        $results = [];
+public function storeTable(Request $request)
+{
+    $pattern = '/^[a-z0-9_]+$/';
 
-        // same rule as your vanilla version
-        $pattern = '/^[a-z0-9_]+$/';
+    $tableName = trim((string) $request->input('table_name', ''));
+    $primaryKey = trim((string) $request->input('primary_key', 'id')); // optional
 
-        // 1) Validate everything first (no partial creation)
-        foreach ($tables as $index => $tableName) {
-            $tableName = trim((string) $tableName);
+    // If you don't actually support custom PK yet, just ignore $primaryKey
+    // (or validate it and use it later)
 
-            if ($tableName === '' || !preg_match($pattern, $tableName)) {
-                $errors[] = "Table name '{$tableName}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
-                continue;
-            }
+    $customErrors = [];
+    $results = [];
 
-            $fieldsForThis = $fieldsGrouped[$index] ?? [];
-            $cleanFields = [];
+    if ($tableName === '' || !preg_match($pattern, $tableName)) {
+        $customErrors[] = "Table name '{$tableName}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
+    }
 
-            foreach ($fieldsForThis as $f) {
-                $f = trim((string) $f);
-                if ($f === '') continue;
+    if ($primaryKey !== '' && !preg_match($pattern, $primaryKey)) {
+        $customErrors[] = "Primary key '{$primaryKey}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
+    }
 
-                if (!preg_match($pattern, $f)) {
-                    $errors[] = "Field '{$f}' in table '{$tableName}' is invalid. Only lowercase letters, numbers, and underscores are allowed.";
-                    continue;
-                }
+    if (!empty($customErrors)) {
+        return view('schema.add', [
+            'customErrors' => $customErrors,
+            'results' => [],
+        ]);
+    }
 
-                // dedupe
-                $cleanFields[$f] = true;
-            }
-
-            if (count($cleanFields) === 0) {
-                $errors[] = "No valid fields provided for table '{$tableName}'.";
-            }
-        }
-
-        if (!empty($errors)) {
-            // Return to same page with your custom $errors array
-            // (NOTE: this is different from Laravel's $errors bag)
+    try {
+        if (Schema::hasTable($tableName)) {
             return view('schema.add', [
-                'customErrors' => $errors,
-                'results' => $results,
-            ]);
-
-        }
-        try {
-            foreach ($tables as $index => $tableName) {
-                $tableName = trim((string) $tableName);
-
-                $fieldsForThis = $fieldsGrouped[$index] ?? [];
-                $cleanFields = [];
-                foreach ($fieldsForThis as $f) {
-                    $f = trim((string) $f);
-                    if ($f !== '') $cleanFields[$f] = true;
-                }
-                $cleanFields = array_keys($cleanFields);
-
-                if (!Schema::hasTable($tableName)) {
-                    Schema::create($tableName, function (\Illuminate\Database\Schema\Blueprint $table) use ($cleanFields) {
-                        $table->bigIncrements('id');
-
-                        foreach ($cleanFields as $col) {
-                            $table->string($col, 255); // NOT NULL by default
-                        }
-
-                        $table->timestamp('created_at')->useCurrent();
-                    });
-
-                    $results[] = [
-                        'table' => $tableName,
-                        'fields' => $cleanFields,
-                        'result' => ['message' => "Table `{$tableName}` created."],
-                    ];
-                } else {
-                    $results[] = [
-                        'table' => $tableName,
-                        'fields' => $cleanFields,
-                        'result' => ['message' => "Table `{$tableName}` already exists."],
-                    ];
-                }
-            }
-        } catch (\Throwable $e) {
-            return view('schema.add', [
-                'customErrors' => ['SQL Error: ' . $e->getMessage()],
-                'results' => [],
+                'customErrors' => [],
+                'results' => [[
+                    'table' => $tableName,
+                    'fields' => [],
+                    'result' => ['message' => "Table `{$tableName}` already exists."],
+                ]],
             ]);
         }
+
+        Schema::create($tableName, function (Blueprint $table) use ($primaryKey) {
+            // Default Laravel style:
+            if ($primaryKey === '' || $primaryKey === 'id') {
+                $table->bigIncrements('id');
+            } else {
+                $table->bigIncrements($primaryKey);
+            }
+
+            $table->timestamps(); // created_at + updated_at
+        });
 
         return view('schema.add', [
             'customErrors' => [],
-            'results' => $results,
+            'results' => [[
+                'table' => $tableName,
+                'fields' => [],
+                'result' => ['message' => "✅ Table `{$tableName}` created."],
+            ]],
         ]);
 
-
+    } catch (\Throwable $e) {
+        return view('schema.add', [
+            'customErrors' => ['SQL Error: ' . $e->getMessage()],
+            'results' => [],
+        ]);
     }
+}
+
 
     public function store(Request $request)
     {

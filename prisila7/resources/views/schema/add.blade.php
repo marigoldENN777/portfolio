@@ -24,16 +24,28 @@
       </div>
 
       <div class="p-6">
-        @if ($errors->any())
-          <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
-            <div class="font-semibold mb-2">Please fix the following:</div>
-            <ul class="list-disc pl-5 space-y-1">
-              @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+        @if (!empty($customErrors))
+  <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+    <div class="font-semibold mb-2">Please fix the following:</div>
+    <ul class="list-disc pl-5 space-y-1">
+      @foreach ($customErrors as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
+@if (!empty($results))
+  <div class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+    <div class="font-semibold mb-2">Result:</div>
+    <ul class="list-disc pl-5 space-y-1">
+      @foreach ($results as $r)
+        <li>{{ $r['result']['message'] ?? 'Done.' }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
 
         <form method="POST" action="{{ route('schema.store') }}" class="space-y-6">
           @csrf
