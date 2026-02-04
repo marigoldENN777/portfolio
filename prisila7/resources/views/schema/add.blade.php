@@ -36,15 +36,25 @@
 @endif
 
 @if (!empty($results))
-  <div class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
-    <div class="font-semibold mb-2">Result:</div>
-    <ul class="list-disc pl-5 space-y-1">
-      @foreach ($results as $r)
-        <li>{{ $r['result']['message'] ?? 'Done.' }}</li>
-      @endforeach
-    </ul>
+  <div class="mb-6 rounded-xl border border-emerald-300 bg-emerald-50 p-5 text-emerald-900">
+    <div class="flex items-start gap-3">
+      <!-- Icon -->
+      <div class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white">
+        ✓
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold">Success</h3>
+        <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+          @foreach ($results as $r)
+            <li>{{ $r['result']['message'] ?? 'Done.' }}</li>
+          @endforeach
+        </ul>
+      </div>
+    </div>
   </div>
 @endif
+
 
 
         <form method="POST" action="{{ route('schema.store') }}" class="space-y-6">
