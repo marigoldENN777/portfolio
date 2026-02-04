@@ -35,25 +35,15 @@
   </div>
 @endif
 
-@if (!empty($results))
-  <div class="mb-6 rounded-xl border border-emerald-300 bg-emerald-50 p-5 text-emerald-900">
-    <div class="flex items-start gap-3">
-      <!-- Icon -->
-      <div class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white">
-        ✓
-      </div>
-
-      <div>
-        <h3 class="text-sm font-semibold">Success</h3>
-        <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
-          @foreach ($results as $r)
-            <li>{{ $r['result']['message'] ?? 'Done.' }}</li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
+@if (!empty($success))
+  <div
+    id="flash-message"
+    class="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 transition-opacity duration-500"
+  >
+    {{ $success }}
   </div>
 @endif
+
 
 
 
