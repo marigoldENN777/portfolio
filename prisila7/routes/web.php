@@ -31,9 +31,10 @@ Route::group([], function () {
 
     // Drop table
     Route::post('/schema/drop', [SchemaController::class, 'drop'])->name('schema.drop');
-    Route::delete('/schema/{table}', [SchemaController::class, 'dropTable'])
+    Route::post('/schema/{table}/drop', [SchemaController::class, 'dropTable'])
     ->where('table', '[a-z0-9_]+')
     ->name('schema.drop');
+
 
     Route::get('/schema', [SchemaController::class, 'index'])->name('schema.index');
 

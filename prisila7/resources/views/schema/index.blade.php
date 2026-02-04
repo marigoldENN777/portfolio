@@ -82,16 +82,16 @@
     </a>
 
     <form method="POST" action="{{ route('schema.drop', ['table' => $table]) }}"
-          onsubmit="return confirm('Drop table {{ $table }}? This cannot be undone.');"
-          class="inline">
-      @csrf
-      @method('DELETE')
+      onsubmit="return confirm('Drop table {{ $table }}? This cannot be undone.');"
+      class="inline">
+  @csrf
 
-      <button type="submit"
-              class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-sm font-semibold text-red-700 hover:bg-red-100">
-        Drop
-      </button>
-    </form>
+  <button type="submit"
+          class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-sm font-semibold text-red-700 hover:bg-red-100">
+    Drop
+  </button>
+</form>
+
   </div>
 </td>
 
