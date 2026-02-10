@@ -12,30 +12,27 @@
     <link rel="canonical" href="https://www.yourcompany.com/">
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script src="https://kit.fontawesome.com/64a3cf3d72.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="/svision/public/assets/css/tailwind.css"> -->
     <!-- <link rel="stylesheet" href="./assets/css/tailwind.css"> -->
 </head>
 
 <body>
-
     <div class="container mx-auto w-full max-w-[1200px]">
         <!-- NAVIGATION + LOGOTYPE (mobile-first) -->
-        <header class="sticky top-0 z-50 mx-auto w-full max-w-[1200px] px-4 pt-5 ">
+        <header class="top-0 z-50 mx-auto w-full max-w-[1200px] px-4 pt-5 ">
             <nav class="flex items-center justify-between gap-3
-    rounded-2xl
-    border border-slate-200
-    bg-slate-50/80
-    backdrop-blur-md
-    px-4 py-3
-    shadow-sm
-    transition-all duration-300" aria-label="Primary">
+                        rounded-2xl
+                        border border-slate-200
+                        bg-slate-50/80
+                        backdrop-blur-md
+                        px-4 py-3
+                        shadow-sm
+                        transition-all duration-300" aria-label="Primary">
                 <!-- LOGOTYPE -->
                 <a href="#home" class="select-none text-sm sm:text-lg font-semibold tracking-[0.18em] text-slate-900 hover:text-blue-600
-  transition-colors data-[active=true]:text-blue-600" data-link>
-                    <span class="font-extrabold">SAFE</span>
-                    <span class="font-medium opacity-90">VISION</span>
+                        transition-colors data-[active=true]:text-blue-600 w-24" data-link>
+                    <img src="../assets/images/logo-safe-vision-bck.png" alt="Logo">
                 </a>
                 <!-- NAV LINKS (mobile-first: compact) -->
                 <!-- Desktop menu -->
@@ -59,7 +56,7 @@
                 <!-- Hamburger Icon for Mobile -->
                 <i id="menu-btn" class="fa-solid fa-bars block md:hidden cursor-pointer text-xl"></i>
                 <!-- Mobile Menu -->
-                <ul id="mobile-menu" class="hidden flex-col gap-4 text-sm font-semibold text-slate-700 bg-white p-4 absolute top-12 right-4 shadow-lg rounded-md md:hidden">
+                <ul id="mobile-menu" class="hidden flex-col gap-4 text-sm font-semibold text-slate-700 bg-white p-4 absolute top-24 right-4 shadow-lg rounded-md md:hidden">
                     <li>
                         <a href="#bzr" data-link class="block px-2 py-1 hover:text-blue-600 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40">
                             Usluge
@@ -99,25 +96,27 @@
                                 <i class="text-sm md:text-base fa-solid fa-chevron-down text-slate-500 transition duration-200 group-open:rotate-180"></i>
                             </summary>
                             <div class="grid gap-3 px-5 pb-5 text-sm text-slate-600">
-                                <p>Bezbednost i zdravlje na radu obuhvata procenu rizika na radnim mestima, izradu potrebne dokumentacije, obuku zaposlenih i sprovođenje preventivnih mera.</p>
+                                <p>Uređen sistem bezbednosti i zdravlja na radu zasniva se na proceni rizika na radnim mestima, izradi dokumentacije, obuci zaposlenih i sprovođenju preventivnih mera u skladu sa važećim propisima.
+                                    U okviru naših usluga izrađujemo akte, pravilnike, uputstva, evidencije i zapisnike, u potpunosti prilagođene vašoj organizaciji.
+                                    Pored toga, pružamo savetodavne i konsultantske usluge koje obuhvataju stručnu podršku, pripremu za inspekcijske nadzore, analizu postojećeg sistema i izradu strategija unapređenja.</p>
                                 <a href="#bzr" class="text-sm font-semibold text-blue-600 hover:text-blue-700">
                                     Pročitaj još →
                                 </a>
                             </div>
                         </details>
                         <!-- Duplicate for other services -->
-                        <!-- ZOP -->
+                        <!-- KBZR -->
                         <details data-card class="group w-full rounded-2xl border border-slate-200 bg-slate-50 shadow-sm transition hover:shadow-md transition-colors duration-300">
                             <summary class="flex h-[100px] cursor-pointer list-none items-center justify-between px-5 rounded-2xl hover:bg-slate-100/60">
                                 <div class="flex items-center gap-4">
                                     <span class="h-10 w-1.5 rounded-full bg-blue-600"></span>
-                                    <div class="text-base md:text-lg font-semibold text-slate-800">ZOP</div>
+                                    <div class="text-base md:text-lg font-semibold text-slate-800">KBZR</div>
                                 </div>
                                 <i class="text-sm md:text-base fa-solid fa-chevron-down text-slate-500 transition group-open:rotate-180"></i>
                             </summary>
                             <div class="grid gap-3 px-5 pb-5 text-sm text-slate-600">
-                                <p>Zaštita od požara obuhvata preventivne, organizacione i tehničke mere koje imaju za cilj sprečavanje nastanka požara, kao i smanjenje posledica ukoliko do požara dođe.</p>
-                                <a href="#zop" class="text-sm font-semibold text-blue-600 hover:text-blue-700">
+                                <p>Koordinator za bezbednost i zdravlje na radu u fazi izvođenja radova i Koordinator za bezbednost i zdravlje na radu u fazi projektovanja (izrada plana preventivnih mera).</p>
+                                <a href="#kbzr" class="text-sm font-semibold text-blue-600 hover:text-blue-700">
                                     Pročitaj još →
                                 </a>
                             </div>
@@ -139,32 +138,17 @@
                             </div>
                         </details>
                         <!-- ISO -->
-                        <details data-card class="group w-full rounded-2xl border border-slate-200 bg-slate-50 shadow-sm transition hover:shadow-md transition-colors duration-300">
-                            <summary class="flex h-[100px] cursor-pointer list-none items-center justify-between px-5 rounded-2xl hover:bg-slate-100/60">
-                                <div class="flex items-center gap-4">
-                                    <span class="h-10 w-1.5 rounded-full bg-blue-600"></span>
-                                    <div class="text-base md:text-lg font-semibold text-slate-800">ISO</div>
-                                </div>
-                                <i class="text-sm md:text-base fa-solid fa-chevron-down text-slate-500 transition group-open:rotate-180"></i>
-                            </summary>
-                            <div class="grid gap-3 px-5 pb-5 text-sm text-slate-600">
-                                <p>ISO standardi predstavljaju međunarodno priznate norme koje definišu zahteve za upravljanje kvalitetom, bezbednošću, zaštitom zdravlja i životne sredine.</p>
-                                <a href="#iso" class="text-sm font-semibold text-blue-600 hover:text-blue-700">
-                                    Pročitaj još →
-                                </a>
-                            </div>
-                        </details>
                     </div>
                 </div>
                 <!-- RIGHT 50%: vertically centered titles -->
                 <div class="flex w-full lg:w-1/2 items-center order-1 md:order-2">
                     <div class="flex flex-col gap-6">
                         <h1 class="text-2xl md:text-3xl  font-semibold leading-snug text-slate-900">
-                            Pružamo profesionalne usluge bezbednosti i zaštite na radu
+                            Pružamo profesionalne usluge u oblasti bezbednosti i zdravlja na radu
                         </h1>
                         <h2 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">
-                            Primena mera bezbednosti i zdravlja na radu nije samo zakonska obaveza,
-                            već i odgovornost svakog poslodavca prema zaposlenima.
+                            U skladu sa važećim propisima.
+                            Primena mera bezbednosti i zdravlja na radu nije samo zakonska obaveza, već i odgovornost svakog poslodavca prema zaposlenima.
                         </h2>
                     </div>
                 </div>
@@ -178,50 +162,45 @@
                 <div class="flex flex-col gap-6 w-full lg:w-1/2 order-1 md:order-1
                opacity-0 translate-y-[120px] transition-all duration-700 ease-out will-change-transform" data-animate="up">
                     <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900 transition-colors duration-500" data-title>
-                        Bezbednost i zaštita na radu
+                        Bezbednost i zdravlje na radu
                     </h3>
                     <p class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">
-                        Predstavlja skup mera, postupaka i pravila kojima se obezbeđuju sigurni i zdravi uslovi rada za zaposlene, uz poštovanje važećih zakona i propisa Republike Srbije.
+                        Obuhvata skup mera, postupaka i pravila kojima se obezbeđuju sigurni i zdravi uslovi rada za zaposlene, u skladu sa važećim zakonima i propisima Republike Srbije. Podrazumeva procenu rizika na radnim mestima, izradu potrebne dokumentacije, obuku zaposlenih i sprovođenje preventivnih mera, sa ciljem smanjenja rizika na najmanju moguću meru i obezbeđivanja bezbedne i kontrolisane radne sredine.
                     </p>
                 </div>
                 <!-- IMAGE (animate in, slightly delayed) -->
                 <div class="hero my-12 w-full lg:w-1/2 order-2 md:order-2
-               opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up">
+               opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform flex justify-center" data-animate="up">
                     <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/bezbednost-i-zastita-na-radu-section-image.jpg" alt="Safety at Work" />
                 </div>
             </div>
         </section>
         <section class="px-4">
-            <div class="flex flex-col md:flex-row align-center gap-6">
+            <!-- <div class="flex flex-col md:flex-row align-center gap-6">
                 <div class="hero w-full lg:w-1/2  order-2  md:order-1 my-12 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/bezbednost-i-zastita-na-radu-section1.jpg" alt="Bezbednost i zastita na radu">
+                    <img class=" w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/bezbednost-i-zastita-na-radu-section1.jpg" alt="Bezbednost i zastita na radu">
                 </div>
                 <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 order-1 md:order-2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Bezbednost i zdravlje na radu</h3>
-                    <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">Bezbednost i zdravlje na radu obuhvata procenu rizika na radnim mestima, izradu potrebne dokumentacije, obuku zaposlenih i sprovođenje preventivnih mera. Cilj je da se rizici svedu na najmanju moguću meru i da zaposleni rade u sigurnom i kontrolisanom okruženju.</h3>
+                    <h3 class=" section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Bezbednost i zdravlje na radu</h3>
+                    <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">Uređen sistem bezbednosti i zdravlja na radu zasniva se na proceni rizika na radnim mestima, izradi dokumentacije, obuci zaposlenih i sprovođenju preventivnih mera u skladu sa važećim propisima.
+                        U okviru naših usluga izrađujemo akte, pravilnike, uputstva, evidencije i zapisnike, u potpunosti prilagođene vašoj organizaciji.
+                        Pored toga, pružamo savetodavne i konsultantske usluge koje obuhvataju stručnu podršku, pripremu za inspekcijske nadzore, analizu postojećeg sistema i izradu strategija unapređenja.</h3>
                 </div>
-            </div>
-            <div id="zop"></div>
+            </div> -->
+            <div id="kbzr"></div>
             <div class="flex flex-col md:flex-row align-center gap-6">
-                <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Zaštita od požara</h3>
-                    <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">Zaštita od požara obuhvata preventivne, organizacione i tehničke mere koje imaju za cilj sprečavanje nastanka požara, kao i smanjenje posledica ukoliko do požara dođe.</h3>
-                    <ul class="text-base md:text-lg font-medium leading-relaxed text-slate-700 list-disc">
-                        <h4 class="">Usluge zaštite od požara uključuju:</h4>
-                        <li class="ml-12">izradu plana evakuacije i spasavanja</li>
-                        <li class="ml-12">obuku zaposlenih za postupanje u slučaju požara</li>
-                        <li class="ml-12">izradu procene ugroženosti od požara</li>
-                        <li class="ml-12">kontrolu i održavanje protivpožarne opreme</li>
-                    </ul>
+                <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform order-1 md:order-2" data-animate="up"">
+                    <h3 class=" section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Koordinator za bezbednost i zdravlje na radu</h3>
+                    <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">Prema Uredbi o bezbednosti i zdravlju na radu na privremenim ili pokretnim gradilištima investitor, odnosno zastupnik investitora je dužan da odredi jednog ili više koordinatora za izradu projekta i jednog ili više koordinatora za izvođenje radova kada na gradilištu izvode ili je predviđeno da će radove izvoditi dva ili više izvođača radova. Koordinator za izvođenje radova vrši koordinaciju primene načela prevencije. Koordinator za izradu projekta izrađuje Plan preventivnih mera bezbednosti i zdravlja na radu.</h3>
                 </div>
-                <div class="hero my-12 w-full lg:w-1/2 order-2 md:order-1 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/fire-exit-bezbednost-i-zastita-na-radu.jpg" alt="Zastita od pozara">
+                <div class="hero my-12 w-full lg:w-1/2 order-2 md:order-1 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform flex justify-center" data-animate="up"">
+                    <img class=" w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/slika-za-koordinatora.jpg" alt="Koordinator bezbednosti na radu">
                 </div>
             </div>
             <div id="zzs"></div>
             <div class="flex flex-col md:flex-row align-center gap-6">
-                <div class="md:order-2 order-1 flex flex-col justify-center gap-6 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Zaštita životne sredine</h3>
+                <div class="md:order-1 order-1 flex flex-col justify-center gap-6 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
+                    <h3 class=" section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">Zaštita životne sredine</h3>
                     <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">Zaštita životne sredine podrazumeva primenu mera kojima se smanjuje negativan uticaj poslovnih aktivnosti na prirodu i okolinu. Cilj je usklađivanje poslovanja sa ekološkim propisima i očuvanje životne sredine.</h3>
                     <ul class="text-base md:text-lg font-medium leading-relaxed text-slate-700 list-disc">
                         <h4>Obuhvata:</h4>
@@ -231,14 +210,14 @@
                         <li class="ml-12">usklađivanje sa važećim ekološkim zakonima</li>
                     </ul>
                 </div>
-                <div class="hero md:order-1 order-2 my-12 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/zastita-zivotne-sredine-bezbednost-i-zastita-na-radu.jpg" alt="Bezbednost I Zastita na Radu, zastita zivotne sredine">
+                <div class="hero md:order-2 order-2 my-12 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform flex justify-center" data-animate="up"">
+                    <img class=" w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/zastita-zivotne-sredine-bezbednost-i-zastita-na-radu.jpg" alt="Bezbednost I Zastita na Radu, zastita zivotne sredine">
                 </div>
             </div>
-            <div id="iso"></div>
+            <!-- <div id="iso"></div>
             <div class="flex flex-col md:flex-row align-center gap-6">
                 <div class="flex flex-col justify-center gap-6 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <h3 class="section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">ISO standardi</h3>
+                    <h3 class=" section-title text-2xl md:text-3xl font-semibold leading-snug text-slate-900">ISO standardi</h3>
                     <h3 class="text-lg md:text-xl font-medium leading-relaxed text-slate-700">ISO standardi predstavljaju međunarodno priznate norme koje definišu zahteve za upravljanje kvalitetom, bezbednošću, zaštitom zdravlja i životne sredine.</h3>
                     <ul class="text-base md:text-lg font-medium leading-relaxed text-slate-700 list-disc">
                         <h4>Najčešći standardi u oblasti bezbednosti i zaštite su:</h4>
@@ -248,9 +227,9 @@
                     </ul>
                 </div>
                 <div class="hero my-12 w-full lg:w-1/2 opacity-0 translate-y-[120px] transition-all duration-700 ease-out delay-150 will-change-transform" data-animate="up"">
-                    <img class="w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/iso-standardi-bezbednost-i-zastita-na-radu.jpg" alt="Zastita i bezbednost na radu ISO standardi">
+                    <img class=" w-full max-w-[500px] h-auto max-h-[300px] object-cover" src="../assets/images/iso-standardi-bezbednost-i-zastita-na-radu.jpg" alt="Zastita i bezbednost na radu ISO standardi">
                 </div>
-            </div>
+            </div> -->
         </section>
         <div id="about-us" data-scroll class="h-[1px]"></div>
         <section class="px-4 md:px-0 my-12">
@@ -285,10 +264,7 @@ hover:shadow-lg
 transition-all
 duration-300
       ">
-                        Naša firma pruža usluge iz oblasti bezbednosti i zaštite na radu, sa ciljem
-                        stvaranja sigurnog, zdravog i usklađenog radnog okruženja za zaposlene i
-                        poslodavce. Verujemo da je prevencija ključ uspešnog poslovanja i da
-                        bezbednost mora biti sastavni deo svake organizacije.
+                        Naša kompanija pruža usluge iz oblasti bezbednosti i zdravlja na radu, sa ciljem stvaranja bezbedne radne sredine za zaposlene i poslodavce. Verujemo da je prevencija ključ uspešnog poslovanja i da bezbednost mora biti sastavni deo svake organizacije.
                     </h4>
                     <!-- Odlomak 2 -->
                     <h4 class="
@@ -309,10 +285,7 @@ hover:shadow-lg
 transition-all
 duration-300
       ">
-                        Kroz stručan pristup, kontinučno praćenje propisa i saradnju sa klijentima,
-                        pomažemo kompanijama da ispune zakonske obaveze i unaprede nivo zaštite na
-                        radu. Naše usluge su prilagođene različitim delatnostima i veličinama
-                        organizacija.
+                        Kroz stručan i odgovoran pristup, kontinuirano praćenje važećih propisa i partnersku saradnju sa klijentima, omogućavamo kompanijama da ispune sve zakonske obaveze i unaprede nivo bezbednosti i zdravlja na radu. Naše usluge su fleksibilne i prilagođene različitim delatnostima i veličinama organizacija, uz fokus na praktična, efikasna i dugoročna rešenja.
                     </h4>
                     <!-- Odlomak 3 -->
                     <h4 class="
@@ -332,9 +305,7 @@ hover:shadow-lg
 transition-all
 duration-300
       ">
-                        Posvećeni smo profesionalnosti, pouzdanosti i odgovornosti, sa jasnim ciljem
-                        da doprinesemo bezbednijem radnom okruženju i dugoročnoj stabilnosti
-                        poslovanja naših klijenata.
+                        Kroz odgovoran i sistematičan pristup poslovanju, pomažemo klijentima da unaprede bezbednost i zdravlje na radu i obezbede stabilno i održivo poslovanje.
                     </h4>
                 </div>
             </div>
@@ -401,6 +372,52 @@ duration-300
                 </div>
             </form>
         </section>
+        <footer class="mx-auto w-full max-w-[1200px] px-4 pb-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6
+           rounded-2xl
+           border border-slate-200
+           bg-slate-50/80
+           backdrop-blur-md
+           px-6 py-6
+           shadow-sm
+           transition-all duration-300">
+                <!-- Left side -->
+                <div class="space-y-2">
+                    <h3 class="text-lg font-semibold text-slate-800">
+                        Budite slobodni da nas kontaktirate.
+                    </h3>
+                    <p class="text-sm text-slate-600 font-medium">
+                        SAFE VISION PR
+                    </p>
+                </div>
+                <!-- Middle -->
+                <div class="space-y-1 text-sm text-slate-700">
+                    <p class="font-semibold text-slate-800">Adresa:</p>
+                    <p>Jedanaeste krajiške divizije 18,</p>
+                    <p>11090 Beograd</p>
+                </div>
+                <!-- Right -->
+                <div class="space-y-2 text-sm text-slate-700">
+                    <div>
+                        <p class="font-semibold text-slate-800">Kontakt:</p>
+                        <p>
+                            <a href="tel:+381691380010" class="hover:text-slate-900 transition">
+                                +381 69 13 800 10
+                            </a>
+                        </p>
+                        <p>
+                            <a href="mailto:safevision13@gmail.com" class="hover:text-slate-900 transition">
+                                safevision13@gmail.com
+                            </a>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Radno vreme:</p>
+                        <p>08-16h (Pon-Pet)</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script>
     // on click show text
