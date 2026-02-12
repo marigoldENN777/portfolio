@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/db.php'; // db.php is inside /admin
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   header('Location: /public/index.html?sent=0');
   exit;
@@ -14,21 +12,28 @@ $contact = trim((string)($_POST['contact'] ?? ''));
 $message = trim((string)($_POST['message'] ?? ''));
 
 if ($name === '' || $subject === '' || $contact === '' || $message === '') {
-  header('Location: /public/index.html?sent=0');
+  header('Location: /index.html?sent=0');
   exit;
 }
 
-$stmt = db()->prepare("
-  INSERT INTO contact_messages (name, title, contact, message)
-  VALUES (:name, :title, :contact, :message)
-");
+$to = "nevenjosipovic5@gmail.com"; // <-- email klijenta
+$emailSubject = "Nova poruka sa sajta: " . $subject;
 
-$stmt->execute([
-  ':name' => $name,
-  ':title' => $subject,
-  ':contact' => $contact,
-  ':message' => $message,
-]);
+$emailBody = "
+Ime: $name
+Kontakt: $contact
 
-header('Location: /public/index.html?sent=1');
+Poruka:
+$message
+";
+
+$headers = "From: nevenjosipovic5@gmail.com\r\n";
+$headers .= "Reply-To: $contact\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+if (mail($to, $emailSubject, $emailBody, $headers)) {
+    header('Location: /index.html?sent=1');
+} else {
+    header('Location: /index.html?sent=0');
+}
 exit;
