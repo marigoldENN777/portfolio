@@ -29,7 +29,7 @@ session_start();
         <div class="text-sm text-gray-600">
           <?php if(isset($_SESSION["admin_logged_in"])) : ?>
             <a
-              href="admin_dashboard"
+              href="admin_dashboard.php"
               class="inline-flex items-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50"
             >
               Admin Dashboard
