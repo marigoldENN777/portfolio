@@ -16,6 +16,7 @@ session_start();
   <link rel="stylesheet" href="/assets/css/tailwind.css?v=1">
   <link rel="stylesheet" href="/online_booking_dev/assets/css/tailwind.css?v=1">
   <link rel="stylesheet" href="/online_booking_dev/public/assets/css/tailwind.css?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 </head>
